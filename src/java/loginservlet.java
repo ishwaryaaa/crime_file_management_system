@@ -15,13 +15,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author KHSCI5MCA16060
  */
-public class LoginServlet extends HttpServlet {
+public class loginservlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,43 +35,41 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
-            String type = request.getParameter("s1");
-            String name = request.getParameter("txt1");
-            String pass = request.getParameter("ps1");
+             String type = request.getParameter("s1");
+            String name = request.getParameter("username");
+            String pass = request.getParameter("password");
             try
             {
-               // Class.forName("com.mysql.jdbc.Driver");  
-               // Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/tat","root","");     
-                //out.println("Connected...");
+                Class.forName("com.mysql.jdbc.Driver");  
+                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/crime","root","");     
+                out.println("Connected...");
                 
-                //PreparedStatement stmt=con.prepareStatement("select * from teacher_details");
-                //ResultSet rst=stmt.executeQuery(); 
+                PreparedStatement stmt=con.prepareStatement("select * from register2");
+                ResultSet rst=stmt.executeQuery(); 
                 
-                //int count =0;
-               // while(rst.next())
-                //{
-                   // String tname = rst.getString(1);
-                    //String tpass = rst.getString(3);
+                int count =0;
+                while(rst.next())
+                {
+                    String tname = rst.getString(1);
+                    String tpass = rst.getString(7);
                     
                     if("o2".equals(type))
                     {
-                        if(name.equals("ad") && pass.equals("ad"))
+                        if(name.equals(tname) && pass.equals(tpass))
                         {
-                            RequestDispatcher rs = request.getRequestDispatcher("/user.html");
+                            RequestDispatcher rs = request.getRequestDispatcher("/complaint.html");
                             rs.forward(request, response);
-                           // count++;
+                            count++;
                         }
                         
-                        //if(count == 0)
-                        else
+                        if(count == 0)
                         {
                             
                             out.println("<html><head><script>window.alert('ERROR IN USERNAME AND PASSWORD');window.location.assign('index.html');</script></head></html>");
                      
                             RequestDispatcher rd=request.getRequestDispatcher("/index.html");
-                           rd.include(request, response);
+                            rd.include(request, response);
                         }
                      }
                     else if("o1".equals(type))
@@ -81,7 +78,6 @@ public class LoginServlet extends HttpServlet {
                         {
                             RequestDispatcher rs = request.getRequestDispatcher("/admin.html");
                             rs.forward(request, response);
-                            
                         }
                         else
                         {   
@@ -91,7 +87,6 @@ public class LoginServlet extends HttpServlet {
                     
                         }
                     }
-                    
                     
                    
                 
@@ -104,24 +99,25 @@ public class LoginServlet extends HttpServlet {
                 }
             
                  
-             
+             }
             catch(Exception e)
             {
                 out.println(e);
             }
            
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet test</title>");            
+            out.println("<title>Servlet loginservlet</title>");            
             out.println("</head>");
             out.println("<body>");
-           
-            
+            out.println("<h1>Servlet loginservlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
