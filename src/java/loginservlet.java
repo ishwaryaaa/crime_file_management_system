@@ -36,31 +36,43 @@ public class loginservlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-             String type = request.getParameter("s1");
+            String utype = request.getParameter("utype");
             String name = request.getParameter("username");
             String pass = request.getParameter("password");
+            int count =0;
             try
             {
                 Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/crime","root","");     
+                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");     
                 out.println("Connected...");
                 
                 PreparedStatement stmt=con.prepareStatement("select * from register2");
                 ResultSet rst=stmt.executeQuery(); 
+                out.println("hiii");
+                //stmt.executeUpdate();
                 
-                int count =0;
-                while(rst.next())
+                
+               while(rst.next())
+              
                 {
-                    String tname = rst.getString(1);
+                   // if(nmae.equals)
+                    String tname = rst.getString(6);
                     String tpass = rst.getString(7);
-                    
-                    if("o2".equals(type))
+                   out.println(tname);
+                    if("o2".equals(utype))
                     {
-                        if(name.equals(tname) && pass.equals(tpass))
+                        out.println(name);
+                        out.println(pass);
+                         out.println(tname);
+                        out.println(tpass);
+                        
+                        if((name.equals(tname) && pass.equals(tpass)))
                         {
-                            RequestDispatcher rs = request.getRequestDispatcher("/complaint.html");
-                            rs.forward(request, response);
+                            out.println("rose");
                             count++;
+                            RequestDispatcher rs = request.getRequestDispatcher("complaint.html");
+                            rs.forward(request, response);
+                            
                         }
                         
                         if(count == 0)
@@ -72,11 +84,14 @@ public class loginservlet extends HttpServlet {
                             rd.include(request, response);
                         }
                      }
-                    else if("o1".equals(type))
+                    else if(("o1".equals(utype)))
                     {
-                        if(name.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("value"))
+                        out.println(name);
+                        out.println(pass);
+                      
+                       if(name.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("value"))
                         {
-                            RequestDispatcher rs = request.getRequestDispatcher("/admin.html");
+                            RequestDispatcher rs = request.getRequestDispatcher("admin.html");
                             rs.forward(request, response);
                         }
                         else
@@ -112,7 +127,7 @@ public class loginservlet extends HttpServlet {
             out.println("<title>Servlet loginservlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet loginservlet at " + request.getContextPath() + "</h1>");
+           // out.println("<h1>Servlet loginservlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -75,21 +75,27 @@ a {
 </style>
     </head>
     <body>
+        <form action="witnessservlet" method="post">
+   
     <center><h1> WITNESS REPORT</h1></center>
         
         <label for="username"><b> INFORMER NAME</b></label>
-    <input type="text" placeholder="Enter Name" name="username" required>
+    <input type="text" placeholder="Enter Name" name="name" required>
 
     <label for="add"><b>ADDRESS</b></label>
-    <input type="text" placeholder="Enter Address" name="add" required>
+    <input type="text" placeholder="Enter Address" name="address" required>
 
     <label for="phonenumber"><b>PHONE NUMBER</b></label>
-    <input type="text" placeholder="Enter Phone Number" name="number" required>
+    <input type="text" placeholder="Enter Phone Number" name="phonenumber" required>
     
     <label for="sname"><b>SUSPECT NAME</b></label>
-    <input type="text" placeholder="Enter Suspect Name" name="sname" required>
+    <input type="text" placeholder="Enter Suspect Name" name="suspectname" required>
     
     <label for="dis"><b>DESCRIPTION</b></label>
-    <input type="text" placeholder="Description:" name="dis" required>
+    <input type="text" placeholder="Description:" name="description" required>
+    
+      <button type="submit" class="registerbtn">SUBMIT</button>
+        </form>
     </body>
+    
 </html>

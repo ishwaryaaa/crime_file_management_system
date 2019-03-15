@@ -5,10 +5,6 @@
         <servlet-class>RegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Register</servlet-name>
-        <servlet-class>Register</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>complaintservlet</servlet-name>
         <servlet-class>complaintservlet</servlet-class>
     </servlet>
@@ -32,13 +28,17 @@
         <servlet-name>loginservlet</servlet-name>
         <servlet-class>loginservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>witnessservlet</servlet-name>
+        <servlet-class>witnessservlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Register</servlet-name>
-        <url-pattern>/Register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>complaintservlet</servlet-name>
@@ -63,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>loginservlet</servlet-name>
         <url-pattern>/loginservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>witnessservlet</servlet-name>
+        <url-pattern>/witnessservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

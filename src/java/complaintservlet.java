@@ -6,6 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,11 +34,7 @@ public class complaintservlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String citizenname = request.getParameter("citizenname"); 
-        String citizenaddress= request.getParameter("citizenaddress");
-        String job = request.getParameter("job");
-        String age = request.getParameter("age");
-        
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -43,45 +42,63 @@ public class complaintservlet extends HttpServlet {
             out.println("<title>Servlet complaintservlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            if (citizenname == null)
-        {
-            out.println("<p>Name: MISSING</p>");
-         } else {
-            out.println("<p>Name: " + citizenname + "</p>");
-         }
-        if (citizenaddress == null)
-           {
-            out.println("<p>Password: MISSING</p>");
-         } else {
-            out.println("<p>Password: " +citizenaddress+ "</p>");
-         }
-        
-        
-         if (job == null) {
-            out.println("<p>Gender: MISSING</p>");
-         } else if (job.equals("m")) {
-            out.println("<p>Gender: male</p>");
-         } else {
-            out.println("<p>Gender: female</p>");
-         }
- 
-          if (age == null) {
-            out.println("<p>Age: MISSING</p>");
-         } else if (age.equals("1")) {
-            out.println("<p>Age: &lt; 1 year old</p>");
-         } else if (age.equals("99")) {
-            out.println("<p>Age: 1 to 99 years old</p>");
-         } else {
-            out.println("<p>Age: &gt; 99 years old</p>");
-         }
+            int id=Integer.parseInt(request.getParameter("cid"));
+            String name=request.getParameter("cname");
+            String address=request.getParameter("caddress");
+            String job=request.getParameter("cjob");
+            String cdob=request.getParameter("dob");
+            String date_of_inci=request.getParameter("date_of_incident");
          
+            String location=request.getParameter("clocation");
+            String description=request.getParameter("cdescription");
+            String cwitness=request.getParameter("witness");
             
             
             
+            
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Registeruser</title>");            
+            out.println("</head>");
+            out.println("<body>");
+
+            try{
+              
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
+                 PreparedStatement ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?)");
+                     ps1.setInt(1,id);
+                     ps1.setString(2,name);
+                     ps1.setString(3,address);
+                     ps1.setString(4,job);
+                     ps1.setString(5,cdob);
+                     ps1.setString(6,date_of_inci);
+                     ps1.setString(7,location);
+                     ps1.setString(8,description);
+                     ps1.setString(9,cwitness);
+                     
+                     ps1.executeUpdate();
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
+            out.println("hello");
+             }
+             catch(Exception e)
+            {
+                out.println(e);
+            }
+            out.println("<h1>Servlet Registeruser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
+          
+       
+            
+            
+            
+            
+       
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
