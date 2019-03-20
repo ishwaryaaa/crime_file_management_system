@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.sql.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class Registeruser extends HttpServlet {
+public class co extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,44 +31,13 @@ public class Registeruser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String name = request.getParameter("name");
-            String address = request.getParameter("address");
-             int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));        
-            String occupation = request.getParameter("occupation");
-            
-            int age=Integer.parseInt(request.getParameter("age"));
-            String password=request.getParameter("password");
-            String cpassword=request.getParameter("cpassword");
-            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Registeruser</title>");            
+            out.println("<title>Servlet co</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into register  values(?,?,?,?,?,?,?)");
-                     ps1.setString(1,name);
-                     ps1.setString(2,address);
-                     ps1.setInt(3,phonenumber);
-                     ps1.setString(4,occupation);
-                     ps1.setInt(5,age);
-                    
-                     ps1.setString(6,password);
-                     ps1.setString(7,cpassword);
-                     
-                     ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
-            
-             }
-             catch(Exception e)
-            {
-                out.println(e);
-            }
-           
+            out.println("<h1>Servlet co at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

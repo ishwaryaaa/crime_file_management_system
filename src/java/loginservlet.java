@@ -37,7 +37,7 @@ public class loginservlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             String utype = request.getParameter("utype");
-            String name = request.getParameter("username");
+            String name = request.getParameter("name");
             String pass = request.getParameter("password");
             int count =0;
             try
@@ -46,8 +46,9 @@ public class loginservlet extends HttpServlet {
                 Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");     
                 out.println("Connected...");
                 
-                PreparedStatement stmt=con.prepareStatement("select * from register2");
+                PreparedStatement stmt=con.prepareStatement("select * from register");
                 ResultSet rst=stmt.executeQuery(); 
+                
                 out.println("hiii");
                 //stmt.executeUpdate();
                 
@@ -56,21 +57,21 @@ public class loginservlet extends HttpServlet {
               
                 {
                    // if(nmae.equals)
-                    String tname = rst.getString(6);
-                    String tpass = rst.getString(7);
+                    String tname = rst.getString(1);
+                    String tpass = rst.getString(6);
                    out.println(tname);
                     if("o2".equals(utype))
                     {
                         out.println(name);
                         out.println(pass);
-                         out.println(tname);
-                        out.println(tpass);
+                       //  out.println(tname);
+                        //out.println(tpass);
                         
                         if((name.equals(tname) && pass.equals(tpass)))
                         {
                             out.println("rose");
                             count++;
-                            RequestDispatcher rs = request.getRequestDispatcher("complaint.html");
+                            RequestDispatcher rs = request.getRequestDispatcher("user.html");
                             rs.forward(request, response);
                             
                         }
@@ -84,12 +85,17 @@ public class loginservlet extends HttpServlet {
                             rd.include(request, response);
                         }
                      }
-                    else if(("o1".equals(utype)))
+                 
+                
+           
+                         
+                     
+                  else if(("o1".equals(utype)))
                     {
                         out.println(name);
                         out.println(pass);
                       
-                       if(name.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("value"))
+                       if(name.equalsIgnoreCase("ad") && pass.equalsIgnoreCase("v"))
                         {
                             RequestDispatcher rs = request.getRequestDispatcher("admin.html");
                             rs.forward(request, response);
@@ -102,6 +108,7 @@ public class loginservlet extends HttpServlet {
                     
                         }
                     }
+                     
                     
                    
                 
@@ -119,7 +126,7 @@ public class loginservlet extends HttpServlet {
             {
                 out.println(e);
             }
-           
+          
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");

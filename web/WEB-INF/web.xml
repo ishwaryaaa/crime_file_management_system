@@ -36,6 +36,10 @@
         <servlet-name>witnessservlet</servlet-name>
         <servlet-class>witnessservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>co</servlet-name>
+        <servlet-class>co</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>witnessservlet</servlet-name>
         <url-pattern>/witnessservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>co</servlet-name>
+        <url-pattern>/co</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
