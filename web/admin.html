@@ -103,45 +103,95 @@ body {
   right: 35px;
   }
 }
+
+
+    .container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: black;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* Full height */
+  height: 50%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Images used */
+.img1 {
+    background-image: url('b.jpeg'); 
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  font-size: 80px;
+  border: 10px solid #f1f1f1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
 </style>
 </head>
-<body>
-  <div class="topnav">
-  <span onclick="openNav()" style="color:white" >&#9776 BRANCHES</span>
-  <a href="complaint.html">COMPLAINT</a>
-  <a href="complaintstatus.html">CASES</a>
-  <a href="testimony.html">OFFICERS</a>
-  <a href="fir.html">E-FIR</a>
-  <a href="suggest.html">CRIMINAL RECORDS</a>
-  
-  
-  
-
-</div>
-
-<div style="padding-left:16px">
-  
-</div>  
-
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content">
-    <a href="cyber.html">CYBER</a>
-    <a href="traffic.html">TRAFFIC</a>
-    <a href="narcotics.html">NARCOTICS</a>
-    <a href="#">...</a>
-  </div>
-</div>
-
-<button onclick="JavaScript:alert('You will love this book!')">
-<img src="C:\Users\khsci5mca16060\Pictures\s.jpg" alt="FIR"  width="400" height="400">
-</button>
+<body background="C:\Users\khsci5mca16060\Pictures\kk.jpg">>
+<div class="bg-image img1">
+<div class="container">
+<button onclick="admincomplaint">
+<img src="C:\Users\khsci5mca16060\Pictures\p.jpg" alt="FIR"  width="400" height="400">
+</button> 
+    
   <button onclick="JavaScript:alert('You will love this book!')">
-<img src="C:\Users\khsci5mca16060\Pictures\a.jpg" alt="FIR"  width="400" height="400">
+<img src="C:\Users\khsci5mca16060\Pictures\mm.png" alt="FIR"  width="400" height="400">
 </button>
     
     <button onclick="JavaScript:alert('You will love this book!')">
-<img src="C:\Users\khsci5mca16060\Pictures\a.jpg" alt="FIR"  width="400" height="400">
+<img src="C:\Users\khsci5mca16060\Pictures\oo.jpg" alt="FIR"  width="400" height="400">
 </button> 
     
     <button onclick="JavaScript:alert('You will love this book!')">
@@ -149,20 +199,13 @@ body {
 </button>
     
     <button onclick="JavaScript:alert('You will love this book!')">
-<img src="C:\Users\khsci5mca16060\Pictures\e.jpg" alt="FIR"  width="400" height="400">
+<img src="C:\Users\khsci5mca16060\Pictures\r.jpg" alt="FIR"  width="400" height="400">
 </button> 
-      
-    
+    <button onclick="JavaScript:alert('You will love this book!')">
+<img src="C:\Users\khsci5mca16060\Pictures\i.jpg" alt="FIR"  width="400" height="400">
+</button>     
+    </div> 
+<div class="bg-text"></div></div>
 
-<script>
-function openNav() {
-  document.getElementById("myNav").style.width = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
-}
-</script>
-     
 </body>
 </html>

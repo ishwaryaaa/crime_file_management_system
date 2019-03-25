@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.sql.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class co extends HttpServlet {
+public class inner_status extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,14 +34,38 @@ public class co extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+          
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet co</title>");            
+            out.println("<title>Servlet inner_status</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet co at " + request.getContextPath() + "</h1>");
+           
+                int id = Integer.parseInt(request.getParameter("ID")); 
+             String status = request.getParameter("STATUS");
+            String name = request.getParameter("COMPLIANT_HANDLER_NAME");
+            int phno=Integer.parseInt(request.getParameter("POLICE_CONTACT_NUMBER"));
+            String desc= request.getParameter("DESCRPTION");
+            
+           try{
+               out.println("KM");
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
+                 PreparedStatement ps1=con.prepareStatement("insert into status values(?,?,?,?,?)");
+                     ps1.setInt(1,id);
+                     ps1.setString(2,status);
+                     ps1.setString(3,name);
+                     ps1.setInt(4,phno);
+                     ps1.setString(5,desc);
+                     ps1.executeUpdate();
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');</script></body></html>");
+             }
+             catch(Exception e)
+            {
+                out.println(e);
+            }
             out.println("</body>");
             out.println("</html>");
         }

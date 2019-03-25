@@ -37,8 +37,16 @@
         <servlet-class>witnessservlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>co</servlet-name>
-        <servlet-class>co</servlet-class>
+        <servlet-name>admincomplaint</servlet-name>
+        <servlet-class>admincomplaint</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>status</servlet-name>
+        <servlet-class>status</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>inner_status</servlet-name>
+        <servlet-class>inner_status</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -77,8 +85,16 @@
         <url-pattern>/witnessservlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>co</servlet-name>
-        <url-pattern>/co</url-pattern>
+        <servlet-name>admincomplaint</servlet-name>
+        <url-pattern>/admincomplaint</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>status</servlet-name>
+        <url-pattern>/status</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>inner_status</servlet-name>
+        <url-pattern>/inner_status</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
