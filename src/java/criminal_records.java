@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 import java.sql.*;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class inner_status extends HttpServlet {
+public class criminal_records extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,30 +33,46 @@ public class inner_status extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            int id = Integer.parseInt(request.getParameter("id")); 
-            String status = request.getParameter("status");
-            String name = request.getParameter("complaint_handler_name");
-            int phno=Integer.parseInt(request.getParameter("police_contact_number"));
-            String desc= request.getParameter("description");
-            
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Registeruser</title>");            
+            out.println("<title>Servlet criminal_records</title>");            
             out.println("</head>");
             out.println("<body>");
+            int id = Integer.parseInt(request.getParameter("cid"));  
+            String name = request.getParameter("cname");
+            String add = request.getParameter("caddress");
+              String gen = request.getParameter("cgender");
+             int age = Integer.parseInt(request.getParameter("cage"));   
+             int hgt = Integer.parseInt(request.getParameter("height")); 
+             int wgt = Integer.parseInt(request.getParameter("weight")); 
+            String color = request.getParameter("color");
+            String identi=request.getParameter("identification_mark");
+            String occup=request.getParameter("occupation");
+            String fathersname= request.getParameter("father_name");
+            String mothersname= request.getParameter("mother_name");
+            String s= request.getParameter("crime");
             
+                     out.println("fffg");
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into status1  values(?,?,?,?,?)");
-                      ps1.setInt(1,id);
-                     ps1.setString(2,status);
-                     ps1.setString(3,name);
-                     ps1.setInt(4,phno);
-                     ps1.setString(5,desc);
-                     ps1.executeUpdate();
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");
+                out.println("fffg");
+                 PreparedStatement ps1=con.prepareStatement("insert into criminal_records  values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                     ps1.setInt(1,id);
+                     ps1.setString(2,name);
+                     ps1.setString(3,add);
+                     ps1.setString(4,gen);
+                     ps1.setInt(5,age);
+                     ps1.setInt(6,hgt);
+                     ps1.setInt(7,wgt);
+                     ps1.setString(8,color);
+                     ps1.setString(9,identi);
+                     ps1.setString(10,occup);
+                     ps1.setString(11,fathersname);
+                     ps1.setString(12,mothersname);
+                     ps1.setString(13,s);
                      ps1.executeUpdate();
                     out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
             
@@ -72,12 +87,6 @@ public class inner_status extends HttpServlet {
         }
     }
 
-          
-            /* TODO output your page here. You may use following sample code. */
-           
-       
-              
-          
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

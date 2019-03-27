@@ -48,6 +48,10 @@
         <servlet-name>inner_status</servlet-name>
         <servlet-class>inner_status</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>criminal_records</servlet-name>
+        <servlet-class>criminal_records</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>inner_status</servlet-name>
         <url-pattern>/inner_status</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>criminal_records</servlet-name>
+        <url-pattern>/criminal_records</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
