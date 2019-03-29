@@ -52,6 +52,10 @@
         <servlet-name>criminal_records</servlet-name>
         <servlet-class>criminal_records</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>criminal_records1</servlet-name>
+        <servlet-class>criminal_records1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>criminal_records</servlet-name>
         <url-pattern>/criminal_records</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>criminal_records1</servlet-name>
+        <url-pattern>/criminal_records1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

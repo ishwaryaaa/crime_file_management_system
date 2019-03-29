@@ -5,104 +5,76 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+.login {
+  width: 300px;
+  height: 450px;
+  border: 1px solid #CCC;
+  background: url(http://68.media.tumblr.com/2b27908fac782ca54cc2b3aff6862423/tumblr_mra3owkIhC1ro855no1_500.gif) center center no-repeat;
+  background-size: cover;
+  margin: 30px auto;
+  border-radius: 3px;
+}
+.login .form {
   width: 100%;
+  height: 100%;
+  padding: 15px 20px;;
 }
-
-button:hover {
-  opacity: 0.8;
-}
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-.imgcontainer {
+.login .form h2 {
+  color: #FFF;
   text-align: center;
-  margin: 24px 0 12px 0;
+  font-weight: normal;
+  font-size: 18px;
+  margin-top: 60px;
+  margin-bottom: 80px;
 }
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
+.login .form input {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  background: rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 0 15px;
+  color: #FFF;
+  border-radius: 2px;
+  font-size: 14px;
 }
-
-.container {
-  padding: 16px;
+.login .form input:focus {
+  border: 1px solid rgba(255,255,255,.8);
+  outline: none;
 }
-
-span.psw {
-  float: right;
-  padding-top: 16px;
+::-webkit-input-placeholder {
+    color: #DDD;
 }
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
+.login .form input.submit {
+  background: rgba(255,255,255,.9);
+  color: #444;
+  font-size: 15px;
+  margin-top: 40px;
+  font-weight: bold;
 }
-</style>
-</head>
-<body>
-<center>
-
-    <h2>Login</h2>   </center>
-              <form action="loginservlet" method="post" >
-                
-                  <center>
-                      <img src="C:\Users\khsci5mca16060\Downloads\d.png" alt="Avatar" class="avatar"></center>
-
-  <div class="container">
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Username" name="name" required>
-
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required><br><br>
-        <select name="utype">
+        </style>
+    </head>
+    <body>
+       <div class="login">
+  <div class="form">
+    <h2>Welcome</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+     <select name="utype">
    <option value="o1">ADMINISTRATOR</option>
    <option value="o2">USER</option>
-   
-        </select><br><br>
-    <button type="submit" formaction="loginservlet">Login</button>
-   
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+   </select><br><br>
+    <input type="submit" value="Sign In" class="submit">
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="password">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
-
-</body>
+       </div>
+    </body>
 </html>

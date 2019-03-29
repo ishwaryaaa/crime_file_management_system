@@ -47,8 +47,9 @@ public class inner_status extends HttpServlet {
             out.println("<title>Servlet Registeruser</title>");            
             out.println("</head>");
             out.println("<body>");
-            
+              out.println("fg");
             try{
+              
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
                  PreparedStatement ps1=con.prepareStatement("insert into status1  values(?,?,?,?,?)");

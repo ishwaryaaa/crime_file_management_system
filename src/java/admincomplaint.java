@@ -76,12 +76,7 @@ public class admincomplaint extends HttpServlet {
                     String loc = rs.getString("clocation");
                    String desc= rs.getString("cdescription");
                     String wit = rs.getString("witness");
-                    
-                    //int age = Integer.parseInt(ag);
-                    //int years = Integer.parseInt(yoe);
-                    //int contact = Integer.parseInt(cont);
-                    
-                    
+                 
                     out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+" <td> "+dob+"<td >  "+date+"  <td> "+loc+"<td> "+desc+"<td> "+wit+"<td>"+"<input type = \"radio\" name = \"Q1\" value=\"True\">"+"</tr>");
                    
                     out.println("<br>");
@@ -94,11 +89,10 @@ public class admincomplaint extends HttpServlet {
                  out.println("</table>");
                  out.println("<br>");
                    
-                    out.println("<br>");
-                    
-                    
-                 out.println ("<CENTER> <button type='submit' onclick='admin_inner_status.html' name='Submit'>UPDATE</button></CENTER> "); 
-                con.close();
+                 out.println("<br>");
+                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 con.close();
+                 
                 
             }
             catch(Exception e)

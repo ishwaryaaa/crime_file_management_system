@@ -33,7 +33,7 @@ public class Registeruser extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String name = request.getParameter("name");
             String address = request.getParameter("address");
-             int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));        
+            int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));        
             String occupation = request.getParameter("occupation");
             
             int age=Integer.parseInt(request.getParameter("age"));

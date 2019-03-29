@@ -84,49 +84,51 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="col-md-4 col-md-offset-4" id="login">
-						<section id="inner-wrapper" class="login">
+    <section id="inner-wrapper" class="login">
 							<article>
-								<form action="criminal_records" method="get">
+								<form action="criminal_records1" method="POST">
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-user"> </i></span>
-											<input type="text" class="form-control" placeholder="ID" name="id">
+										<input type="text" class="form-control" placeholder="ID" id="c">
+                                                                                       
 										</div>
 									</div>
+                                                                    
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-											<input type="text" class="form-control" placeholder="NAME" name=cname">
+											<input type="text" class="form-control" placeholder="NAME" name="cname">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="text" class="form-control" placeholder="ADDRESS" name="add">
+											<input type="text" class="form-control" placeholder="ADDRESS" name="caddress">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="text" class="form-control" placeholder="GENDER" name="gen">
+											<input type="text" class="form-control" placeholder="GENDER" name="cgender">
 										</div>
 									</div>
                                                                     <div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-user"> </i></span>
-											<input type="text" class="form-control" placeholder="AGE" name="age">
+											<input type="text" class="form-control" placeholder="AGE" name="cage">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-											<input type="text" class="form-control" placeholder="HEIGHT" name="hgt">
+											<input type="text" class="form-control" placeholder="HEIGHT" name="height">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="text" class="form-control" placeholder="WEIGHT" name="wgt">
+											<input type="text" class="form-control" placeholder="WEIGHT" name="weight">
 										</div>
 									</div>
 									<div class="form-group">
@@ -138,25 +140,25 @@
                                                                     <div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-user"> </i></span>
-											<input type="text" class="form-control" placeholder="IDENTIFICATION MARK" name="identi">
+											<input type="text" class="form-control" placeholder="IDENTIFICATION MARK" name="identification_mark">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-											<input type="text" class="form-control" placeholder="OCCUPATION" name="occup">
+											<input type="text" class="form-control" placeholder="OCCUPATION" name="occupation">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="text" class="form-control" placeholder="FATHER'S NAME" name="fathersname">
+											<input type="text" class="form-control" placeholder="FATHER'S NAME" name="father_name">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="text" class="form-control" placeholder="MOTHER'S NAME" name="mothersname">
+											<input type="text" class="form-control" placeholder="MOTHER'S NAME" name="mother_name">
 										</div>
 									</div>
 									  
@@ -164,7 +166,7 @@
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
 								 
-                                                                                        <select name="s">
+                                                                                        <select name="crime">
                                                                       <option value=""  disabled selected hidden class="form-control">Select Crime type</option>
                                                                                 <option value="volvo">Assault</option>
                                                                                 <option value="saab">Battery</option>
@@ -186,7 +188,7 @@
                                                                               </select> 
                                                                                      </div>
                                                                           </div>
-                                                                                                                                                            <button type="submit" formaction="criminal_records" class="btn btn-success btn-block">Submit</button>
+                                                                    <input type="submit"  class="btn btn-success btn-block"  value="Submit">
 									
 
 

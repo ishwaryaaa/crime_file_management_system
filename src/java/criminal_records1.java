@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.sql.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class criminal_records extends HttpServlet {
+public class criminal_records1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,47 +32,41 @@ public class criminal_records extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) { out.println("fffg");
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet criminal_records</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            int id = Integer.parseInt(request.getParameter("cid"));  
-            String name = request.getParameter("cname");
-            String add = request.getParameter("caddress");
-              String gen = request.getParameter("cgender");
-             int age = Integer.parseInt(request.getParameter("cage"));   
-             int hgt = Integer.parseInt(request.getParameter("height")); 
-             int wgt = Integer.parseInt(request.getParameter("weight")); 
-            String color = request.getParameter("color");
-            String identi=request.getParameter("identification_mark");
-            String occup=request.getParameter("occupation");
-            String fathersname= request.getParameter("father_name");
-            String mothersname= request.getParameter("mother_name");
-            String s= request.getParameter("crime");
-            
-                     out.println("fffg");
+           String id = request.getParameter("cid"); 
+            out.println(id);
+            String name = request.getParameter("cname");out.println(name);
+            String address = request.getParameter("caddress");
+            out.println(address);
+            String gender = request.getParameter("cgender"); out.println(gender);
+            int age = Integer.parseInt(request.getParameter("cage"));   out.println(age); 
+            int hgt = Integer.parseInt(request.getParameter("height"));  out.println(hgt);
+            int wgt = Integer.parseInt(request.getParameter("weight"));  out.println(wgt);
+            String ccolor = request.getParameter("color"); out.println(ccolor);
+            String cidentification_mark=request.getParameter("identification_mark"); out.println(cidentification_mark);
+            String coccupation=request.getParameter("occupation"); out.println(coccupation);
+            String cfather_name= request.getParameter("father_name"); out.println(cfather_name);
+            String cmother_name= request.getParameter("mother_name"); out.println(cmother_name);
+            String ccrime= request.getParameter("crime");        out.println("fffg"); out.println(ccrime);
             try{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");
-                out.println("fffg");
-                 PreparedStatement ps1=con.prepareStatement("insert into criminal_records  values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setInt(1,id);
+                Class.forName("com.mysql.jdbc.Driver"); //out.println("fffg");
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
+                //out.println("fffg");
+                 PreparedStatement ps1=con.prepareStatement("insert into criminal_records1 values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                     ps1.setString(1,id);
                      ps1.setString(2,name);
-                     ps1.setString(3,add);
-                     ps1.setString(4,gen);
+                     ps1.setString(3,address);
+                     ps1.setString(4,gender);
                      ps1.setInt(5,age);
                      ps1.setInt(6,hgt);
                      ps1.setInt(7,wgt);
-                     ps1.setString(8,color);
-                     ps1.setString(9,identi);
-                     ps1.setString(10,occup);
-                     ps1.setString(11,fathersname);
-                     ps1.setString(12,mothersname);
-                     ps1.setString(13,s);
+                     ps1.setString(8,ccolor);
+                     ps1.setString(9,cidentification_mark);
+                     ps1.setString(10,coccupation);
+                     ps1.setString(11,cfather_name);
+                     ps1.setString(12,cmother_name);
+                     ps1.setString(13,ccrime);
                      ps1.executeUpdate();
                     out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
             
@@ -81,7 +75,16 @@ public class criminal_records extends HttpServlet {
             {
                 out.println(e);
             }
-           
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet criminal_records1</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            
+            
+            
+            out.println("<h1>Servlet criminal_records1 at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
