@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class fir extends HttpServlet {
+public class adminwitness extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,59 +34,68 @@ public class fir extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int complaint_id = Integer.parseInt(request.getParameter("cid"));  
-           
-            int f_id = Integer.parseInt(request.getParameter("fid"));    
-           String name = request.getParameter("fname"); 
-            String gen = request.getParameter("gender");
-            String dt_ob = request.getParameter("dob");  
-            String addr = request.getParameter("faddress"); 
-            int phno = Integer.parseInt(request.getParameter("phonenumber"));    
-            String crim=request.getParameter("crime");
-            String crime_description=request.getParameter("crimedescription"); 
-            String father_name = request.getParameter("fathersname"); 
-            String date_of_crime = request.getParameter("dateofcrime"); 
-           String dt= request.getParameter("date");  
-            String loc = request.getParameter("location"); 
-            
-           
-            
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet fir</title>");            
+            out.println("<title>Servlet adminwitness</title>");            
             out.println("</head>");
             out.println("<body>");
-        
-            
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setInt(1,complaint_id);
-                     ps1.setInt(2,f_id);
-                     ps1.setString(3,name);
-                     ps1.setString(4,gen);
-                     ps1.setString(5,dt_ob);
-                     ps1.setString(6,addr);
-                     ps1.setInt(7,phno);
-                     ps1.setString(8,crim);
-                     ps1.setString(9,crime_description);
-                     ps1.setString(10,father_name);
-                     ps1.setString(11,date_of_crime);
-                     ps1.setString(12,dt);
-                     ps1.setString(13,loc);
-                   
-                     
-                     
-                     ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
-            
-             }
-             catch(Exception e)
+        try
             {
-                out.println(e);
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
+                PreparedStatement ps = con.prepareStatement("select * from witness");
+                ResultSet rs = ps.executeQuery();
+                out.println("<center>");
+                out.println("<h1>WITNESS DETAILS <h1>");
+               
+                out.println("</center>"); 
+              
+                out.println("<table border=1 width=60% height=80% align=center>"
+                        + "<tr>"
+                        + "<th>INFORMER NAME </th>"
+                        + "<th>ADDRESS</th>"
+                        +"<th>PHONE NUMBER</th>"
+                        +"<th>SUSPECT NAME</th>"
+                        +"<th>DESCRIPTION</th>"
+                          + "</tr>");
+              
+                while(rs.next())
+                {
+                   
+                    String name = rs.getString("name");
+                    String add = rs.getString("address");
+                    
+                    int ph = rs.getInt("phonenumber");
+                       String suspectname = rs.getString("suspectname");
+                   String desc= rs.getString("description");
+               
+                 
+                    out.println("<tr align=center >"+ "<td >" +name+"<td width ='20%' >"+add+"<td > "+ph+"<td > "+ suspectname+" <td> "+desc+"</tr>");
+                   
+                    out.println("<br>");
+                   
+                    out.println("<br>");
+                    
+                    
+                   
+                }
+                 out.println("</table>");
+                 out.println("<br>");
+                   
+                 out.println("<br>");
+                //out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 con.close();
+                 
+                
             }
+            catch(Exception e)
+            {
+                out.println("Exception : "+e);
+            }
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

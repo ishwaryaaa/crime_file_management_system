@@ -35,20 +35,20 @@ public class criminal_records1 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) { out.println("fffg");
             /* TODO output your page here. You may use following sample code. */
            String id = request.getParameter("cid"); 
-            out.println(id);
-            String name = request.getParameter("cname");out.println(name);
+           
+            String name = request.getParameter("cname");
             String address = request.getParameter("caddress");
-            out.println(address);
-            String gender = request.getParameter("cgender"); out.println(gender);
-            int age = Integer.parseInt(request.getParameter("cage"));   out.println(age); 
-            int hgt = Integer.parseInt(request.getParameter("height"));  out.println(hgt);
-            int wgt = Integer.parseInt(request.getParameter("weight"));  out.println(wgt);
-            String ccolor = request.getParameter("color"); out.println(ccolor);
-            String cidentification_mark=request.getParameter("identification_mark"); out.println(cidentification_mark);
-            String coccupation=request.getParameter("occupation"); out.println(coccupation);
-            String cfather_name= request.getParameter("father_name"); out.println(cfather_name);
-            String cmother_name= request.getParameter("mother_name"); out.println(cmother_name);
-            String ccrime= request.getParameter("crime");        out.println("fffg"); out.println(ccrime);
+           
+            String gender = request.getParameter("cgender"); 
+            int age = Integer.parseInt(request.getParameter("cage"));  
+            int hgt = Integer.parseInt(request.getParameter("height"));  
+            int wgt = Integer.parseInt(request.getParameter("weight")); 
+            String ccolor = request.getParameter("color"); 
+            String cidentification_mark=request.getParameter("identification_mark"); 
+            String coccupation=request.getParameter("occupation"); 
+            String cfather_name= request.getParameter("father_name");
+            String cmother_name= request.getParameter("mother_name");
+            String ccrime= request.getParameter("crime"); 
             try{
                 Class.forName("com.mysql.jdbc.Driver"); //out.println("fffg");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
