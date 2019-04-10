@@ -11,20 +11,20 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="inner_status" method="get"> 
+        <form action="status1" method="POST"> 
             ID:   <input type="text" placeholder="" name="id" required><BR>
             <BR>
-        STATUS:   <select>
-     <option value="s">SELECT</option>
+            STATUS:   <select name="status">
+     <option value="status">SELECT</option>
      <option value="open">Open</option>
      <option value="ongoing">Ongoing</option>
      <option value="closed">Closed</option>
         </select><br><br><br>
-        COMPLAINT HANDLER NAME:     <input type="text" placeholder="" name="name" required> <BR><br><br>
-        POLICE CONTACT NUMBER:       <input type="text" placeholder="" name="no" required> <br><br><br>
-        <textarea rows="5" cols="50"> ENTER DESCRIPTION HERE..</textarea><br><br>
-        <button type="submit" formaction ="inner_status" class="registerbtn">SUBMIT</button>
+        COMPLAINT HANDLER NAME:    <input type="text" placeholder="" name="complaint_handler_name" required> <BR><br><br>
+        POLICE CONTACT NUMBER:     <input type="text" placeholder="" name="police_contact_number" required> <br><br><br>
+                   
+        <textarea rows="5" cols="50" name="description" placeholder="ENTER DESCRIPTION HERE.."></textarea><br><br>
+        <button type="submit" formaction ="status1" class="registerbtn">SUBMIT</button>
         </form>
-   
-    </body>
+   </body>
 </html>

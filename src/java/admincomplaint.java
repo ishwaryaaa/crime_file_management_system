@@ -58,6 +58,7 @@ public class admincomplaint extends HttpServlet {
                         +"<th>DATE OF BIRTH</th>"
                         +"<th>DATE OF INCIDENT</th>"
                         +"<th>LOCATION</th>"
+                        +"<th>CRIME TYPE</th>"
                         +"<th>DESCRIPTION</th>"
                         +"<th>WITNESS</th>"
                        +"<th>SELECT</th>"
@@ -71,13 +72,15 @@ public class admincomplaint extends HttpServlet {
                     
                     int ph = rs.getInt("cphone");
                     String job = rs.getString("cjob");
-                     int dob = rs.getInt("dob");
-                   int date = rs.getInt("date_of_incident");
+                    int dob = rs.getInt("dob");
+                    int date = rs.getInt("date_of_incident");
                     String loc = rs.getString("clocation");
-                   String desc= rs.getString("cdescription");
+                    String type=rs.getString("crime_type");
+                    String desc= rs.getString("cdescription");
                     String wit = rs.getString("witness");
                  
-                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+" <td> "+dob+"<td >  "+date+"  <td> "+loc+"<td> "+desc+"<td> "+wit+"<td>"+"<input type = \"radio\" name = \"Q1\" value=\"True\">"+"</tr>");
+                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+" <td> "+dob+"<td >  "+date+"  <td> "+loc+"<td> "+type+"<td> "
+                            +desc+"<td> "+wit+"<td>"+"<input type = \"radio\" name = \"Q1\" value=\"True\">"+"</tr>");
                    
                     out.println("<br>");
                    
@@ -91,6 +94,10 @@ public class admincomplaint extends HttpServlet {
                    
                  out.println("<br>");
                  out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 out.println("ROW NO:");
+                  out.println(" <input type=\"text\" placeholder=\"Enter Username\" name=\"name\" required>\n"+"");
+                  
+                 
                  con.close();
                  
                 

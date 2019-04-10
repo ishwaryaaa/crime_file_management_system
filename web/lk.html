@@ -43,32 +43,77 @@ body, html {height: 100%}
   <div class="w3-modal-content w3-animate-zoom">
     <div class="w3-container w3-black w3-display-container">
       <span onclick="document.getElementById('menu').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-      <h1>Starters</h1>
-    </div>
-    <div class="w3-container">
-      <h5>Tomato Soup <b>$2.50</b></h5>
-      <h5>Chicken Salad <b>$3.50</b></h5>
-      <h5>Bread and Butter <b>$1.00</b></h5>
-    </div>
-    <div class="w3-container w3-black">
-      <h1>Main Courses</h1>
-    </div>
-    <div class="w3-container">
-      <h5>Grilled Fish and Potatoes <b>$8.50</b></h5>
-      <h5>Italian Pizza <b>$5.50</b></h5>
-      <h5>Veggie Pasta <b>$4.00</b></h5>
-      <h5>Chicken and Potatoes <b>$6.50</b></h5>
-      <h5>Deluxe Burger <b>$5.00</b></h5>
-    </div>
-    <div class="w3-container w3-black">
-      <h1>Desserts</h1>
-    </div>
-    <div class="w3-container">
-      <h5>Fruit Salad <b>$2.50</b></h5>
-      <h5>Ice cream <b>$2.00</b></h5>
-      <h5>Chocolate Cake <b>$4.00</b></h5>
-      <h5>Cheese <b>$5.50</b></h5>
-    </div>
+      
+<form action="complaintservlet" method="post">
+  <div class="container">
+    
+    <hr>
+    
+    <label for="cid"><b>ID</b></label>
+    <input type="text" placeholder="ENTER ID" name="cid" required>
+
+    <label for="citizenname"><b>CITIZEN NAME</b></label>
+    <input type="text" placeholder="ENTER CITIZEN NAME" name="cname" required>
+
+    <label for="citizenaddress"><b>CITIZEN ADDRESS</b></label>
+    <input type="text" placeholder="ENTER CITIZEN ADDRESS" name="caddress" required>
+
+    <label for="cphone"><b>PHONE NUMBER</b></label>
+    <input type="text" placeholder="ENTER PHONE NUMBER" name="cphone" required>
+    
+    <label for="job"><b>CITIZEN EMPLOYER</b></label>
+    <input type="text" placeholder="JOB" name="cjob" required>
+    
+    <label for="dob"><b>DATE OF BIRTH</b></label>
+    <input type="text" placeholder="ENTER AGYOUR DATE OF BIRTH" name="dob" required>
+    
+    <label for="dt"><b>DATE AND TIME OF INCIDENT</b></label>
+    <input type="text" placeholder="ENTER DATE AND TIME OF INCIDENT" name="date_of_incident" required>
+   
+    
+    <label for="locaton"><b>LOCATION</b></label>
+    <input type="text" placeholder="ENTER LOCATION" name="clocation" required>
+    
+    <label for="crime"><b>CRIME TYPE</b></label>
+    <br>
+    <br>
+    <select name="crime_type" >
+                                                                      
+       <option value=""  disabled selected hidden class="form-control">Select Crime type</option>
+                                                                                <option value="Assault">Assault</option>
+                                                                                <option value="Battery">Battery</option>
+                                                                                <option value="Kidnapping">Kidnapping</option>
+                                                                                <option value="Homicide">Homicide</option>
+                                                                                <option value="Rape/Sexual Assault">Rape/Sexual Assault</option>
+                                                                                <option value="Larceny">Larceny</option>
+                                                                                <option value="Robbery">Robbery</option>
+                                                                                <option value="Burglary">Burglary</option>
+                                                                                <option value="Arson">Arson</option>
+                                                                                <option value="Embezzlement">Embezzlement</option>
+                                                                                <option value="Forgery">Forgery</option>
+                                                                                <option value="False pretenses">False pretenses</option>
+                                                                                <option value="Attempt">Attempt</option>
+                                                                                <option value="Solicitation">Solicitation</option>
+                                                                                <option value="Conspiracy">Conspiracy</option>
+                                                                                <option value="Alcohol related crimes">Alcohol related crimes</option>
+                                                                                <option value="Selling alcohol to minor">Selling alcohol to minor</option>
+                                                                              </select> 
+   
+    <br>
+    <br>
+    <label for="description"><b>DESCRIPTION</b></label>
+    <input type="text" placeholder="ENTER DESCRIPTION" name="cdescription" required>
+    
+    <label for="witness"><b>WITNESS</b></label>
+    <input type="text" placeholder="ENTER WITNESS" name="witness" required>
+    <hr>
+    
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  
+</form>
   </div>
 </div>
 
@@ -79,16 +124,16 @@ body, html {height: 100%}
       <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
       <h1>Contact</h1>
     </div>
-    <div class="w3-container">
-      <p>Reserve a table, ask for today's special or just send us a message:</p>
-      <form action="/action_page.php" target="_blank">
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-        <p><button class="w3-button" type="submit">SEND MESSAGE</button></p>
-      </form>
-    </div>
+    <form action="status" method="get">
+        <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> 
+    <center>
+        <input type="text" placeholder="NAME" name="name" required><br><BR>
+        <input type="text" placeholder="COMPLAINT ID" name="id" required><br>
+        <br>
+        <button type="submit" class="registerbtn" formaction="status">CHECK STATUS</button> 
+     <button type="submit" class="registerbtn">CLEAR</button>
+    <button type="submit" class="registerbtn">HOME</button>
+        </form>
   </div>
 </div>
 

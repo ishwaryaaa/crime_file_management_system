@@ -132,6 +132,10 @@
         <servlet-name>lk</servlet-name>
         <servlet-class>lk</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>status1</servlet-name>
+        <servlet-class>status1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -263,6 +267,10 @@
     <servlet-mapping>
         <servlet-name>lk</servlet-name>
         <url-pattern>/lk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>status1</servlet-name>
+        <url-pattern>/status1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

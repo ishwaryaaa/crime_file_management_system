@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class complaintservlet extends HttpServlet {
+public class status1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,74 +36,47 @@ public class complaintservlet extends HttpServlet {
             
             
             /* TODO output your page here. You may use following sample code. */
+            String id1 = request.getParameter("id");
+            
+             int id = Integer.parseInt(id1); 
+            String status = request.getParameter("status");
+            String name = request.getParameter("complaint_handler_name");
+            String contact = request.getParameter("police_contact_number");
+            int phno=Integer.parseInt(contact);
+            String desc= request.getParameter("description");
+             
+             
+             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet complaintservlet</title>");            
+            out.println("<title>Servlet status1</title>");            
             out.println("</head>");
             out.println("<body>");
-            int id=Integer.parseInt(request.getParameter("cid"));
-            String name=request.getParameter("cname");
-            String address=request.getParameter("caddress");
-            int phno=Integer.parseInt(request.getParameter("cphone"));
-            String job=request.getParameter("cjob");
-            String cdob=request.getParameter("dob");
-            String date_of_inci=request.getParameter("date_of_incident");
-         
-            String location=request.getParameter("clocation");
-            String type=request.getParameter("crime_type");
-            String description=request.getParameter("cdescription");
-            String cwitness=request.getParameter("witness");
-            
-            
-            
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Registeruser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-
-            try{
+           
+        try{
               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setInt(1,id);
-                     ps1.setString(2,name);
-                     ps1.setString(3,address);
-                     ps1.setInt(4, phno);
-                     ps1.setString(5,job);
-                     ps1.setString(6,cdob);
-                     ps1.setString(7,date_of_inci);
-                     ps1.setString(8,location);
-                      ps1.setString(9,type);
-                     ps1.setString(10,description);
-                     ps1.setString(11,cwitness);
-                     
+                 PreparedStatement ps1=con.prepareStatement("insert into status  values(?,?,?,?,?)");
+                      ps1.setInt(1,id);
+                     ps1.setString(2,status);
+                     ps1.setString(3,name);
+                     ps1.setInt(4,phno);
+                     ps1.setString(5,desc);
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
-        
-             }
+              
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
             
+             }
              catch(Exception e)
             {
                 out.println(e);
             }
-            out.println("<h1>Servlet Registeruser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-          
-       
-            
-            
-            
-            
-       
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

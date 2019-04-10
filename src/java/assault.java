@@ -45,7 +45,7 @@ public class assault extends HttpServlet {
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
-                PreparedStatement ps = con.prepareStatement("select * from criminal_records1 where crime='Assault'");
+                PreparedStatement ps = con.prepareStatement("select * from criminal_records1 where crime='assault'");
                 ResultSet rs = ps.executeQuery();
                 out.println("<center>");
                 out.println("<h1>COMPLAINT DETAILS <h1>");
@@ -107,7 +107,7 @@ public class assault extends HttpServlet {
             }
             catch(Exception e)
             {
-                out.println("Exception : "+e);
+                //out.println("Exception : "+e);
             }
                    
                 }

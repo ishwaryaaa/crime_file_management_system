@@ -6,6 +6,11 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +37,8 @@ public class status extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String name = request.getParameter("name");
             /* TODO output your page here. You may use following sample code. */
+            
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -40,18 +47,38 @@ public class status extends HttpServlet {
             out.println("<body>");
             
             out.println("WELCOME     "+name);
-             out.println("<br>");
-                   
-                    out.println("<br>");
+           try
+           {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
+                String var=request.getParameter("id");
+                out.println(var);
+             PreparedStatement ps = con.prepareStatement("select * from status where id='?'");
+              ps.setString(1, var);
+               ResultSet rs = ps.executeQuery();
+                out.println("<center>");
+                out.println("<h1>DETAILS <h1>");
+                while(rs.next())
+                {
                     
-           out.println("YOUR COMPLAINT IS:"); 
-            out.println("<br>");
+                String status= request.getParameter("status");
+                String complaint_handler_name = request.getParameter("complaint_handler_name");
+
+                String desc= request.getParameter("description"); 
+                int phno = Integer.parseInt(request.getParameter("police_contact_number"));   
+            
+                out.println(status);
+                out.println(complaint_handler_name);
+                out.println(phno);
+                out.println(desc);
+            } 
+            }
+            catch(Exception e)
+            {
+                out.println("Exception : "+e);
+            }
                    
-                    out.println("<br>");
-                    
-            out.println("COMPLAINT STATUS:");
-            
-            
+                
             
             out.println("</body>");
             out.println("</html>");

@@ -107,7 +107,7 @@ public class robbery extends HttpServlet {
             }
             catch(Exception e)
             {
-                out.println("Exception : "+e);
+               // out.println("Exception : "+e);
             }
                    
                 }
