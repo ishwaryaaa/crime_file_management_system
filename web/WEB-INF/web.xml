@@ -136,6 +136,10 @@
         <servlet-name>status1</servlet-name>
         <servlet-class>status1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>suggestions</servlet-name>
+        <servlet-class>suggestions</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -271,6 +275,10 @@
     <servlet-mapping>
         <servlet-name>status1</servlet-name>
         <url-pattern>/status1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>suggestions</servlet-name>
+        <url-pattern>/suggestions</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

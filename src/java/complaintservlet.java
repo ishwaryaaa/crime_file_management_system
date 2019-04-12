@@ -84,7 +84,7 @@ public class complaintservlet extends HttpServlet {
                      
                      ps1.executeUpdate();
                     out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
-        
+        out.println(id);
              }
             
              catch(Exception e)

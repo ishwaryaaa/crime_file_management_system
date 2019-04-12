@@ -60,7 +60,7 @@ public class inner_status extends HttpServlet {
                      ps1.setString(5,desc);
                      ps1.executeUpdate();
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('admin.html');</script></body></html>");
             
              }
              catch(Exception e)

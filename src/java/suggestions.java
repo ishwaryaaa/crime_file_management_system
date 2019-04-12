@@ -9,8 +9,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KHSCI5MCA16060
  */
-public class status extends HttpServlet {
+public class suggestions extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,51 +33,49 @@ public class status extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("name");
             /* TODO output your page here. You may use following sample code. */
-            
-            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet status</title>");            
+            out.println("<title>Servlet suggestions</title>");            
             out.println("</head>");
-            out.println(" <body background=\"C:\\Users\\khsci5mca16060\\Downloads\\17.jpg\">");
+            out.println("<body>");
+           
+            String timelymanner=request.getParameter("timely_manner");
+            String pro=request.getParameter("proffesional");
+             String polite=request.getParameter("polite");
+            String issue=request.getParameter("issue");
             
-            out.println("WELCOME "+name);
-           try
-           {
+            String satif=request.getParameter("satisfaction");
+            String concern=request.getParameter("concern");
+             String manner=request.getParameter("manner");
+            String remarks=request.getParameter("remarks");
+            String comments=request.getParameter("comments");
+             
+            try{
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
-                String v=request.getParameter("id");
-                
-             PreparedStatement ps = con.prepareStatement("select * from status where id=?");
-              ps.setString(1, v);
-               ResultSet rs = ps.executeQuery();
-                out.println("<center>");
-                out.println("<h1>DETAILS <h1>");
-                while(rs.next())
-                {
-                    out.println("ID:");
-                     out.println(rs.getString(1)); 
-                     out.println("<br>");
-                      out.println("STATUS:");
-                     out.println(rs.getString(2));
-                     out.println("<br>");
-                      out.println("COMPLAINT HANDLER NAME:");
-                     out.println(rs.getString(3));
-                     out.println("<br>");
-                      out.println("POLICE CONTACT NUMBER:");
-                     out.println(rs.getString(4));
-            } 
-            }
-            catch(Exception e)
-            {
-                out.println("Exception : "+e);
-            }
-                   
-                
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
+                 PreparedStatement ps1=con.prepareStatement("insert into suggestions values(?,?,?,?,?,?,?,?,?)");
+                 
+                     ps1.setString(1,timelymanner);
+                     ps1.setString(2,pro);
+                     ps1.setString(3,polite);
+                     ps1.setString(4,issue);
+                     ps1.setString(5,satif);
+                     ps1.setString(6,concern);
+                     ps1.setString(7,manner);
+                    
+                     ps1.setString(8,remarks);
+                     ps1.setString(9,comments);
+                     out.println(pro);
+                     ps1.executeUpdate();
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
             
+             }
+             catch(Exception e)
+            {
+                out.println(e);
+            }
             out.println("</body>");
             out.println("</html>");
         }
