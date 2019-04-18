@@ -46,7 +46,7 @@ public class status extends HttpServlet {
             out.println("</head>");
             out.println(" <body background=\"C:\\Users\\khsci5mca16060\\Downloads\\17.jpg\">");
             
-            out.println("WELCOME "+name);
+         
            try
            {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -60,6 +60,7 @@ public class status extends HttpServlet {
                 out.println("<h1>DETAILS <h1>");
                 while(rs.next())
                 {
+                     out.println("<br>");
                     out.println("ID:");
                      out.println(rs.getString(1)); 
                      out.println("<br>");
@@ -73,7 +74,7 @@ public class status extends HttpServlet {
                      out.println(rs.getString(4));
             } 
             }
-            catch(Exception e)
+            catch(Exception e)             
             {
                 out.println("Exception : "+e);
             }

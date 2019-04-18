@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +63,7 @@ public class fir extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
                  PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            
                      ps1.setInt(1,complaint_id);
                      ps1.setInt(2,f_id);
                      ps1.setString(3,name);
@@ -76,9 +78,8 @@ public class fir extends HttpServlet {
                      ps1.setString(12,dt);
                      ps1.setString(13,loc);
                    
-                     
-                     
                      ps1.executeUpdate();
+                      
                     out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
             
              }
@@ -86,6 +87,7 @@ public class fir extends HttpServlet {
             {
                 out.println(e);
             }
+            
         }
     }
 

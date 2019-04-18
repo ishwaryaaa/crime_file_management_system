@@ -70,29 +70,22 @@ public class bulgery extends HttpServlet {
                         + "</tr>");
               
                 while(rs.next())
-                {      String id = request.getParameter("cid"); 
-         
-            String name = request.getParameter("cname");
-            String address = request.getParameter("caddress");
-           
-            String gender = request.getParameter("cgender"); 
-            int age = Integer.parseInt(request.getParameter("cage"));   
-            int hgt = Integer.parseInt(request.getParameter("height")); 
-            int wgt = Integer.parseInt(request.getParameter("weight")); 
-            String color = request.getParameter("color");
-            String cident=request.getParameter("identification_mark");
-            String occup=request.getParameter("occupation"); 
-            String father= request.getParameter("father_name"); 
-            String mother= request.getParameter("mother_name"); 
-            String crime= request.getParameter("crime");        
-       
-                 
-                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+address+"<td > "+ gender+" <td> "+age+" <td> "+hgt+"<td >  "+wgt+"  <td> "+color+"<td> "+cident+"<td> "+occup+"<td> "+father+"<td> "+mother+"<td> "+crime+"<td>"+"</tr>");
-                   
-                    out.println("<br>");
-                   
-                    out.println("<br>");
-                    
+                {     out.println("<tr align=center>"
+                        +"<td>"+rs.getString(1)+"</td>"
+                        +"<td>"+rs.getString(2)+"</td>"
+                        +"<td>"+rs.getString(3)+"</td>"
+                        +"<td>"+rs.getString(4)+"</td>"
+                        +"<td>"+rs.getString(5)+"</td>"
+                        +"<td>"+rs.getString(6)+"</td>"
+                        +"<td>"+rs.getString(7)+"</td>"
+                        +"<td>"+rs.getString(8)+"</td>"
+                        +"<td>"+rs.getString(9)+"</td>"
+                        +"<td>"+rs.getString(10)+"</td>"
+                        +"<td>"+rs.getString(11)+"</td>"
+                        +"<td>"+rs.getString(12)+"</td>"
+                                
+                       +"<td>"+rs.getString(13)+"</td>"
+                        +"<tr>");
                     
                    
                 }

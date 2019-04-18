@@ -34,7 +34,7 @@ public class criminal_records1 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) { out.println("fffg");
             /* TODO output your page here. You may use following sample code. */
-           String id = request.getParameter("cid"); 
+           int id=Integer.parseInt(request.getParameter("cid"));
            
             String name = request.getParameter("cname");
             String address = request.getParameter("caddress");
@@ -54,7 +54,7 @@ public class criminal_records1 extends HttpServlet {
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 //out.println("fffg");
                  PreparedStatement ps1=con.prepareStatement("insert into criminal_records1 values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setString(1,id);
+                     ps1.setInt(1,id);
                      ps1.setString(2,name);
                      ps1.setString(3,address);
                      ps1.setString(4,gender);

@@ -43,6 +43,7 @@ public class complaintservlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             int id=Integer.parseInt(request.getParameter("cid"));
+            int cid = 0;
             String name=request.getParameter("cname");
             String address=request.getParameter("caddress");
             int phno=Integer.parseInt(request.getParameter("cphone"));
@@ -70,7 +71,7 @@ public class complaintservlet extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
                  PreparedStatement ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setInt(1,id);
+                     ps1.setInt(1,cid);
                      ps1.setString(2,name);
                      ps1.setString(3,address);
                      ps1.setInt(4, phno);
@@ -81,7 +82,7 @@ public class complaintservlet extends HttpServlet {
                       ps1.setString(9,type);
                      ps1.setString(10,description);
                      ps1.setString(11,cwitness);
-                     
+                     cid++;
                      ps1.executeUpdate();
                     out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
         out.println(id);

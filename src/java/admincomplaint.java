@@ -94,8 +94,7 @@ public class admincomplaint extends HttpServlet {
                    
                  out.println("<br>");
                  out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
-                 out.println("ROW NO:");
-                  out.println(" <input type=\"text\" placeholder=\"Enter Username\" name=\"name\" required>\n"+"");
+                
                   
                  
                  con.close();
