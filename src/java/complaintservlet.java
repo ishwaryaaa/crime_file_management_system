@@ -42,7 +42,7 @@ public class complaintservlet extends HttpServlet {
             out.println("<title>Servlet complaintservlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            int id=Integer.parseInt(request.getParameter("cid"));
+            //int id=Integer.parseInt(request.getParameter("cid"));
             int cid = 0;
             String name=request.getParameter("cname");
             String address=request.getParameter("caddress");
@@ -55,7 +55,7 @@ public class complaintservlet extends HttpServlet {
             String type=request.getParameter("crime_type");
             String description=request.getParameter("cdescription");
             String cwitness=request.getParameter("witness");
-            
+            PreparedStatement ps1 = null;
             
             
             
@@ -70,7 +70,7 @@ public class complaintservlet extends HttpServlet {
               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)");
+                  ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
                      ps1.setInt(1,cid);
                      ps1.setString(2,name);
                      ps1.setString(3,address);
@@ -84,10 +84,15 @@ public class complaintservlet extends HttpServlet {
                      ps1.setString(11,cwitness);
                      cid++;
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
-        out.println(id);
-             }
-            
+                      int row = ps1.executeUpdate();
+
+            if (row > 0) {
+
+               out.println("<html><head><script>window.alert('RECORD ADDED');window.alert('ID:'+cid+'');window.location.assign('LOGIN.html');</script></head></html>");
+
+               out.println(row);
+            }
+            }
              catch(Exception e)
             {
                 out.println(e);

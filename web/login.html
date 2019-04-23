@@ -15,7 +15,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--webfonts-->
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 <!--/webfonts-->
-</head>
+
+<script type="text/javascript">
+
+			function validateMe()
+
+			{
+
+				var empt1 = document.forms["form1"]["name"].value;
+
+                                var empt2 = document.forms["form1"]["password"].value;
+
+                               
+
+                                if (empt1=="" || empt2=="")
+
+                                {
+
+                                    
+
+                                 alert("Please input both id and password to Login");
+
+                                 return false;
+
+                                }
+
+                                else 
+
+                                {
+
+                                   return true;
+
+                                }
+
+			}
+
+		</script>
 <style>
     /*--
 Author: W3layouts
@@ -356,7 +391,7 @@ input[type="submit"]:hover {
 <!--start-main-->
 <h1>Welcome!<span>Please login...</span></h1>
 <div class="login-box">
-		<form action="loginservlet" method="post" >
+		<form name="form1" action="loginservlet" method="post" >
 			<input type="text" placeholder="Enter Username" name="name" required>
 			
                       <input type="password" placeholder="Enter Password" name="password" required><br><br>

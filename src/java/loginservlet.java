@@ -49,7 +49,7 @@ public class loginservlet extends HttpServlet {
                 PreparedStatement stmt=con.prepareStatement("select * from register");
                 ResultSet rst=stmt.executeQuery(); 
                 
-                out.println("hiii");
+               // out.println("hiii");
                 //stmt.executeUpdate();
                 
                 

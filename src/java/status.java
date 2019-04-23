@@ -53,7 +53,7 @@ public class status extends HttpServlet {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 String v=request.getParameter("id");
                 
-             PreparedStatement ps = con.prepareStatement("select * from status where id=?");
+             PreparedStatement ps = con.prepareStatement("select * from status1 where id=?");
               ps.setString(1, v);
                ResultSet rs = ps.executeQuery();
                 out.println("<center>");

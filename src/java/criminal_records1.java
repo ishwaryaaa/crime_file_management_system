@@ -34,8 +34,8 @@ public class criminal_records1 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) { out.println("fffg");
             /* TODO output your page here. You may use following sample code. */
-           int id=Integer.parseInt(request.getParameter("cid"));
-           
+          // int id=Integer.parseInt(request.getParameter("cid"));
+           int cid=0;
             String name = request.getParameter("cname");
             String address = request.getParameter("caddress");
            
@@ -49,12 +49,13 @@ public class criminal_records1 extends HttpServlet {
             String cfather_name= request.getParameter("father_name");
             String cmother_name= request.getParameter("mother_name");
             String ccrime= request.getParameter("crime"); 
+             PreparedStatement ps1=null;
             try{
                 Class.forName("com.mysql.jdbc.Driver"); //out.println("fffg");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 //out.println("fffg");
-                 PreparedStatement ps1=con.prepareStatement("insert into criminal_records1 values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                     ps1.setInt(1,id);
+                  ps1=con.prepareStatement("insert into criminal_records1 values(?,?,?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+                     ps1.setInt(1,cid);
                      ps1.setString(2,name);
                      ps1.setString(3,address);
                      ps1.setString(4,gender);
@@ -67,9 +68,18 @@ public class criminal_records1 extends HttpServlet {
                      ps1.setString(11,cfather_name);
                      ps1.setString(12,cmother_name);
                      ps1.setString(13,ccrime);
-                     ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
-            
+                     cid++;
+
+                int row = ps1.executeUpdate();
+
+            if (row > 0) {
+
+               out.println("<html><head><script>window.alert('RECORD ADDED');"+
+                      "window.location.assign('user.html');</script></head></html>");
+
+               out.println(row);
+
+            }
              }
              catch(Exception e)
             {

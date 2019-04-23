@@ -37,9 +37,9 @@ public class witnessservlet extends HttpServlet {
             
             String name=request.getParameter("name");
             String address=request.getParameter("address");
-            int phno=Integer.parseInt(request.getParameter("phonenumber"));
-            String sname=request.getParameter("suspectname");
-            String descri=request.getParameter("description");
+            int phonenumber=Integer.parseInt(request.getParameter("phonenumber"));
+            String suspectname=request.getParameter("suspectname");
+            String description=request.getParameter("description");
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -47,17 +47,18 @@ public class witnessservlet extends HttpServlet {
             out.println("<title>Servlet witnessservlet</title>");            
             out.println("</head>");
             out.println("<body>");
+             out.println("ji");
           try{
               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into witness  values(?,?,?,?,?)");
-                    
+                 PreparedStatement ps1=con.prepareStatement("insert into witness values(?,?,?,?,?)");
+                   
                      ps1.setString(1,name);
                      ps1.setString(2,address);
-                     ps1.setInt(3,phno);
-                     ps1.setString(4,sname);
-                     ps1.setString(5,descri);
+                     ps1.setInt(3,phonenumber);
+                     ps1.setString(4,suspectname);
+                     ps1.setString(5,description);
                      
                      
                      ps1.executeUpdate();

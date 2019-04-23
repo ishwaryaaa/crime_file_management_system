@@ -58,7 +58,7 @@ public class status1 extends HttpServlet {
               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into status  values(?,?,?,?,?)");
+                 PreparedStatement ps1=con.prepareStatement("insert into status1 values(?,?,?,?,?)");
                       ps1.setInt(1,id);
                      ps1.setString(2,status);
                      ps1.setString(3,name);
@@ -72,6 +72,40 @@ public class status1 extends HttpServlet {
              catch(Exception e)
             {
                 out.println(e);
+            }
+        
+        try
+
+            {
+
+                Class.forName("com.mysql.jdbc.Driver");
+
+                com.mysql.jdbc.Connection con=(com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/crime","root","");  
+
+               
+
+                     PreparedStatement stmt1=con.prepareStatement("update status1 set status=? where id=?");
+
+                     stmt1.setInt(1, id);
+
+                    
+
+                     stmt1.executeUpdate();
+
+                   
+
+                     out.println("<script>alert('Details Updated');</script>");
+
+                     request.getRequestDispatcher("admincomplaint").include(request, response);
+
+             
+
+            }catch(Exception e)
+
+            {
+
+                out.println(e);
+
             }
             out.println("</body>");
             out.println("</html>");

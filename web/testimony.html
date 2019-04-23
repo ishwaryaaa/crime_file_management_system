@@ -1,39 +1,8 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
+        <title>Witness</title>
+             <style>
             
-/* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
-ol,ul{list-style:none;margin:0px;padding:0px;}
-blockquote,q{quotes:none;}
-blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
-table{border-collapse:collapse;border-spacing:0;}
-/* start editing from here */
-a{text-decoration:none;}
-.txt-rt{text-align:right;}/* text align right */
-.txt-lt{text-align:left;}/* text align left */
-.txt-center{text-align:center;}/* text align center */
-.float-rt{float:right;}/* float right */
-.float-lt{float:left;}/* float left */
-.clear{clear:both;}/* clear float */
-.pos-relative{position:relative;}/* Position Relative */
-.pos-absolute{position:absolute;}/* Position Absolute */
-.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
-.vertical-top{	vertical-align:top;}/* vertical align top */
-nav.vertical ul li{	display:block;}/* vertical menu */
-nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-img{max-width:100%;}
-/*end reset*/
 
 body,p,h1,h2,h3,h4,h5,h6{
 	font-family: 'Cuprum', sans-serif;
@@ -434,37 +403,28 @@ h2.tittle {
 	<div class="about-bottom main-agile book-form">
 		<div class="alert-close"> </div>
 		<h2 class="tittle">Register Here</h2>
-		<form action="#" method="post">
+		<form action="witnessservlet" method="post">
 			<div class="form-date-w3-agileits">
 				<label> Name </label>
 				<input type="text" name="name" placeholder="Your Name" required="">
 				<label> Address </label>
 				<input type="text" name="address" placeholder="Your Address" required="">
 				<label> Phone Number </label>
-				<input type="text" name="phno" placeholder="Your Phone Number" required="">
+				<input type="text" name="phonenumber" placeholder="Your Phone Number" required="">
 				<label> Suspect Name </label>
-				<input type="text" name="sus" placeholder="Suspect Name" required="">
+				<input type="text" name="suspectname" placeholder="Suspect Name" required="">
                                 <label>Description </label>
-				<input type="text" name="desc" placeholder="Description" required="">
+				<input type="text" name="description" placeholder="Description" required="">
 			</div>
 			<div class="make wow shake">
-				  <input type="submit" value="Register">
+				  <input type="submit" value="Register" formaction="witnessservlet">
 			</div>
 		</form>
 	</div>
 	<!-- //Main -->
 </div>
 
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-		<script>$(document).ready(function(c) {
-		$('.alert-close').on('click', function(c){
-			$('.main-agile').fadeOut('slow', function(c){
-				$('.main-agile').remove();
-			});
-		});	  
-	});
-	</script>
+
 
     </body>
 </html>
