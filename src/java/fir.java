@@ -36,7 +36,7 @@ public class fir extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int complaint_id = Integer.parseInt(request.getParameter("cid"));  
            
-            int f_id = Integer.parseInt(request.getParameter("fid"));    
+          int f_id = Integer.parseInt(request.getParameter("fid"));    
            String name = request.getParameter("fname"); 
             String gen = request.getParameter("gender");
             String dt_ob = request.getParameter("dob");  
@@ -62,8 +62,15 @@ public class fir extends HttpServlet {
             try{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            
+                 PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+             PreparedStatement s1 = con.prepareStatement("select * from fir");
+                 ResultSet r = s1.executeQuery();
+                 //int f_id=1;
+                 ///if(r.next())
+                // {  r.last();
+                //     f_id = r.getInt("f_id")+1;
+                // }
+
                      ps1.setInt(1,complaint_id);
                      ps1.setInt(2,f_id);
                      ps1.setString(3,name);

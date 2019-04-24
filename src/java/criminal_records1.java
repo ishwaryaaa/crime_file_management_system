@@ -6,9 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +33,14 @@ public class criminal_records1 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) { out.println("fffg");
             /* TODO output your page here. You may use following sample code. */
           // int id=Integer.parseInt(request.getParameter("cid"));
-           int cid=0;
+           out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet criminal_records1</title>");            
+            out.println("</head>");
+            out.println("<body>");
+               
+            
             String name = request.getParameter("cname");
             String address = request.getParameter("caddress");
            
@@ -54,6 +59,13 @@ public class criminal_records1 extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver"); //out.println("fffg");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 //out.println("fffg");
+                 PreparedStatement s1 = con.prepareStatement("select * from criminal_records1");
+                 ResultSet r = s1.executeQuery();
+                 int cid=1;
+                 if(r.next())
+                 {  r.last();
+                     cid = r.getInt("cid")+1;
+                 }
                   ps1=con.prepareStatement("insert into criminal_records1 values(?,?,?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
                      ps1.setInt(1,cid);
                      ps1.setString(2,name);
@@ -72,10 +84,10 @@ public class criminal_records1 extends HttpServlet {
 
                 int row = ps1.executeUpdate();
 
+                
             if (row > 0) {
 
-               out.println("<html><head><script>window.alert('RECORD ADDED');"+
-                      "window.location.assign('user.html');</script></head></html>");
+               out.println("<script>window.alert('Criminal Record Added successfully. Record id :- "+cid+" '); window.location.assign('user.html');</script>");
 
                out.println(row);
 
@@ -85,12 +97,7 @@ public class criminal_records1 extends HttpServlet {
             {
                 out.println(e);
             }
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet criminal_records1</title>");            
-            out.println("</head>");
-            out.println("<body>");
+           
             
             
             

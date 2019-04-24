@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,12 +44,13 @@ public class admincomplaint extends HttpServlet {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 PreparedStatement ps = con.prepareStatement("select * from complaint");
                 ResultSet rs = ps.executeQuery();
+                int count=0;
                 out.println("<center>");
                 out.println("<h1>COMPLAINT DETAILS <h1>");
                
                 out.println("</center>"); 
               
-                out.println("<table border=1 width=60% height=80% align=center>"
+                out.println("<form action='admin_inner_status.jsp' ><table border=1 width=60% height=80% align=center>"
                         + "<tr>"
                         + "<th>ID </th>"
                         + "<th>NAME</th>"
@@ -65,7 +67,7 @@ public class admincomplaint extends HttpServlet {
                         + "</tr>");
               
                 while(rs.next())
-                {
+                {   count++;
                     int id = rs.getInt("cid");
                     String name = rs.getString("cname");
                     String add = rs.getString("caddress");
@@ -80,7 +82,7 @@ public class admincomplaint extends HttpServlet {
                     String wit = rs.getString("witness");
                  
                     out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+" <td> "+dob+"<td >  "+date+"  <td> "+loc+"<td> "+type+"<td> "
-                            +desc+"<td> "+wit+"<td>"+"<input type = \"radio\" name = \"Q1\" value=\"True\">"+"</tr>");
+                            +desc+"<td> "+wit+"<td>"+"<input type = \"checkbox\" name = \"ch"+count+"\" value=\""+id+"\">"+"</tr>");
                    
                     out.println("<br>");
                    
@@ -89,13 +91,15 @@ public class admincomplaint extends HttpServlet {
                     
                    
                 }
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("count",count);
                  out.println("</table>");
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 out.println ("<CENTER> <button   name='Submit'>UPDATE</button></from></CENTER> "); 
                 
-                  
                  
                  con.close();
                  

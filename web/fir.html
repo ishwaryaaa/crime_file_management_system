@@ -171,23 +171,20 @@
            
       
         </div>
-      
-
         <form action="fir" method="POST" class="form">
           <input type="text" class="name entry " placeholder="COMPLAINT ID" name="cid"/>
-          
-          <input type="text" class="email entry" placeholder="FIR ID" name="fid"/>
+           <input type="text" class="email entry" placeholder="FIR ID" name="fid"/>
            <input type="text" class="email entry" placeholder="NAME" name="fname"/>
            <input type="text" class="email entry" placeholder="GENDER" name="gender"/>
-            <input type="text" class="email entry" placeholder="DATE POF BIRTH" name="dob"/>
+            <input type="date" class="email entry" placeholder="DATE POF BIRTH" name="dob"/>
              <input type="text" class="email entry" placeholder="ADDRESS" name="faddress"/>
-              <input type="text" class="email entry" placeholder="PHONE NUMBER" name="phonenumber"/>
+              <input type="text" class="email entry" placeholder="PHONE NUMBER" maxlength="10" name="phonenumber"/>
                <input type="text" class="email entry" placeholder="CRIME" name="crime"/>
                 
           <textarea class="message entry" placeholder="DESCRIPTION" name="crimedescription"></textarea> 
           <input type="text" class="email entry" placeholder="FATHER'S NAME" name="fathersname"/>
-          <input type="text" class="email entry" placeholder="DATE OF CRIME" name="dateofcrime"/>
-          <input type="text" class="email entry" placeholder="DATE" name="date"/>
+          <input type="date" class="email entry" placeholder="DATE OF CRIME" name="dateofcrime"/>
+          <input type="date" class="email entry" placeholder="DATE" name="date"/>
           <input type="text" class="email entry" placeholder="LOCATION" name="location"/>
           
           <button class="submit entry"  formaction="fir">Submit</button>

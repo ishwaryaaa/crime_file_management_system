@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class complaintservlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             //int id=Integer.parseInt(request.getParameter("cid"));
-            int cid = 0;
+            
             String name=request.getParameter("cname");
             String address=request.getParameter("caddress");
             int phno=Integer.parseInt(request.getParameter("cphone"));
@@ -69,7 +70,14 @@ public class complaintservlet extends HttpServlet {
             try{
               
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");  
+                PreparedStatement s1 = con.prepareStatement("select * from complaint");
+                 ResultSet r = s1.executeQuery();
+                 int cid=1;
+                 if(r.next())
+                 {  r.last();
+                     cid = r.getInt("cid")+1;
+                 }
                   ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
                      ps1.setInt(1,cid);
                      ps1.setString(2,name);
@@ -83,7 +91,6 @@ public class complaintservlet extends HttpServlet {
                      ps1.setString(10,description);
                      ps1.setString(11,cwitness);
                      cid++;
-                     ps1.executeUpdate();
                       int row = ps1.executeUpdate();
 
             if (row > 0) {

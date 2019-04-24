@@ -44,7 +44,7 @@ public class status extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet status</title>");            
             out.println("</head>");
-            out.println(" <body background=\"C:\\Users\\khsci5mca16060\\Downloads\\17.jpg\">");
+            out.println("17.jpg");
             
          
            try

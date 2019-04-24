@@ -492,7 +492,19 @@ input.checkbox:checked:after {
 }
 /*--//responsive--*/
 
+
 </style>
+<script type="text/javascript">
+function v(){
+    var p=document.getElementById(psw).value;
+    var c=document.getElementById(psw1).value;
+    if(p!=c){
+        alert("password doesnt match");
+        return false;
+    }
+    return true;
+}
+</script>
 </head>
 <body BACKGROUND="1.jpg">
 	<!-- main -->
@@ -510,7 +522,7 @@ input.checkbox:checked:after {
     <input type="text" placeholder="Enter Address" name="address" required><BR>
     
     <label for="phonenumber"><b></b></label>
-    <input type="text" placeholder="Enter Phone Number" name="phonenumber" required><BR>
+    <input type="text" placeholder="Enter Phone Number" name="phonenumber" maxlength="10" required><BR>
     
     <label for="job"><b></b></label>
     <input type="text" placeholder="Enter Job" name="occupation" required><BR>
@@ -518,12 +530,11 @@ input.checkbox:checked:after {
     <label for="age"><b></b></label>
     <input type="text" placeholder="Enter Age" name="age" required><BR>
    
-    
-    <label for="password"><b></b></label>
-    <input type="password" placeholder="Enter Password" name="password" required><BR>
+  <input type="password" id="psw" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
     
     <label for="confirm_password"><b></b></label>
-    <input type="password" placeholder="Re-Enter Password" name="cpassword" required><br><br>
+    <input type="password" id="psw1" placeholder="Re-Enter Password" name="cpassword" required><br><br>
  
 					<div class="wthree-text">  
 						<label class="anim">
