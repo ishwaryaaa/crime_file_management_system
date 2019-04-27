@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,106 +36,58 @@ public class loginservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            String utype = request.getParameter("utype");
-            String name = request.getParameter("name");
-            String pass = request.getParameter("password");
-            int count =0;
-            try
-            {
-                Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");     
-                out.println("Connected...");
+
+            try {
+                String utype = request.getParameter("utype");
+                String name = request.getParameter("name");
+                String pass = request.getParameter("password");
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/crime", "root", "");
                 
-                PreparedStatement stmt=con.prepareStatement("select * from register");
-                ResultSet rst=stmt.executeQuery(); 
+
+                PreparedStatement sl = con.prepareStatement("select * from register where name=? AND password=? ");
+                sl.setString(1,name);
+                sl.setString(2,pass);
+                ResultSet rst = sl.executeQuery();
                 
-               // out.println("hiii");
-                //stmt.executeUpdate();
-                
-                
-               while(rst.next())
-              
+                if(rst.next())
                 {
-                   // if(nmae.equals)
-                    String tname = rst.getString(1);
-                    String tpass = rst.getString(6);
-                   out.println(tname);
-                    if("o2".equals(utype))
+                    if(name.equalsIgnoreCase("Admin"))
                     {
-                        out.println(name);
-                        out.println(pass);
-                       //  out.println(tname);
-                        //out.println(tpass);
-                        
-                        if((name.equals(tname) && pass.equals(tpass)))
-                        {
-                            out.println("rose");
-                            count++;
+                        request.getRequestDispatcher("admin.html").forward(request, response);
+                    }
+                    else
+                    {
+                            String uid = rst.getInt("User_id") + "";
+                            HttpSession session = request.getSession();
+                            session.setAttribute("user_id", uid);
                             RequestDispatcher rs = request.getRequestDispatcher("user.html");
                             rs.forward(request, response);
-                            
-                        }
                         
-                        if(count == 0)
-                        {
-                            
-                            out.println("<html><head><script>window.alert('ERROR IN USERNAME AND PASSWORD');window.location.assign('index.html');</script></head></html>");
-                     
-                            RequestDispatcher rd=request.getRequestDispatcher("/index.html");
-                            rd.include(request, response);
-                        }
-                     }
-                 
-                
-           
-                         
-                     
-                  else if(("o1".equals(utype)))
-                    {
-                        out.println(name);
-                        out.println(pass);
-                      
-                       if(name.equalsIgnoreCase("ad") && pass.equalsIgnoreCase("v"))
-                        {
-                            RequestDispatcher rs = request.getRequestDispatcher("admin.html");
-                            rs.forward(request, response);
-                        }
-                        else
-                        {   
-                            out.println("<html><body><script>window.alert('PLEASE CHECK YOUR PASSWORD AND USERNAME');window.location.assign('index.html');</script></body></html>");
-                            RequestDispatcher rs = request.getRequestDispatcher("/index.html");
-                            rs.include(request, response);
-                    
-                        }
                     }
-                     
                     
-                   
-                
-                     else
-                    {
-                        out.println("<html><body><script>alert('PLEASE SELECT USER TYPE');window.location.assign('index.html');</script></body></html>");
-                        RequestDispatcher rs = request.getRequestDispatcher("/index.html");
-                        rs.include(request, response);
-                    }            
                 }
-            
-                 
-             }
-            catch(Exception e)
-            {
+                else
+                {
+                    out.println("<html><head><script>window.alert('Invalid Username or Password');window.location.assign('login.html');</script></head></html>");
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.html");
+                    rd.include(request, response);
+                }
+
+                
+                
+            } catch (Exception e) {
                 out.println(e);
             }
-          
+
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet loginservlet</title>");            
+            out.println("<title>Servlet loginservlet</title>");
             out.println("</head>");
             out.println("<body>");
-           // out.println("<h1>Servlet loginservlet at " + request.getContextPath() + "</h1>");
+            // out.println("<h1>Servlet loginservlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -5,145 +5,127 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: black;
+            }
 
-* {
-  box-sizing: border-box;
-}
+            * {
+                box-sizing: border-box;
+            }
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  background-color: white;
-}
+            /* Add padding to containers */
+            .container {
+                padding: 16px;
+                background-color: white;
+            }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+            /* Overwrite default styles of hr */
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
 
-/* Set a style for the submit button */
-.registerbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+            /* Set a style for the submit button */
+            .registerbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+            }
 
-.registerbtn:hover {
-  opacity: 1;
-}
+            .registerbtn:hover {
+                opacity: 1;
+            }
 
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
+            /* Add a blue text color to links */
+            a {
+                color: dodgerblue;
+            }
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-</style>
-</head>
-<body>
+            /* Set a grey background color and center the text of the "sign in" section */
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
 
-<form action="complaintservlet" method="post">
-  <div class="container">
-    
-    <hr>
-    
-    <!--<label for="cid"><b>ID</b></label>
-    <input type="text" placeholder="ENTER ID" name="cid" required>-->
+        <form action="complaintservlet" method="post">
+            <div class="container">
 
-    <label for="citizenname"><b>CITIZEN NAME</b></label>
-    <input type="text" placeholder="ENTER CITIZEN NAME" name="cname" required>
+                <hr>
 
-    <label for="citizenaddress"><b>CITIZEN ADDRESS</b></label>
-    <input type="text" placeholder="ENTER CITIZEN ADDRESS" name="caddress" required>
 
-    <label for="cphone"><b>PHONE NUMBER</b></label>
-    <input type="text" placeholder="ENTER PHONE NUMBER" name="cphone" maxlength="12" required>
-    
-    <label for="job"><b>CITIZEN EMPLOYER</b></label>
-    <input type="text" placeholder="JOB" name="cjob" required>
-    
-    <label for="dob"><b>DATE OF BIRTH</b></label>
-    <input type="date" placeholder="ENTER AGYOUR DATE OF BIRTH" name="dob" required><br>
-    
-    <label for="dt"><b>DATE AND TIME OF INCIDENT</b></label>
-    <input type="date" placeholder="ENTER DATE AND TIME OF INCIDENT" name="date_of_incident" required><br>
-   
-    
-    <label for="locaton"><b>LOCATION</b></label>
-    <input type="text" placeholder="ENTER LOCATION" name="clocation" required>
-    
-    <label for="crime"><b>CRIME TYPE</b></label>
-    <br>
-    <br>
-    <select name="crime_type" >
-                                                                      
-       <option value=""  disabled selected hidden class="form-control">Select Crime type</option>
-                                                                                <option value="Assault">Assault</option>
-                                                                                <option value="Battery">Battery</option>
-                                                                                <option value="Kidnapping">Kidnapping</option>
-                                                                                <option value="Homicide">Homicide</option>
-                                                                                <option value="Rape/Sexual Assault">Rape/Sexual Assault</option>
-                                                                                <option value="Larceny">Larceny</option>
-                                                                                <option value="Robbery">Robbery</option>
-                                                                                <option value="Burglary">Burglary</option>
-                                                                                <option value="Arson">Arson</option>
-                                                                                <option value="Embezzlement">Embezzlement</option>
-                                                                                <option value="Forgery">Forgery</option>
-                                                                                <option value="False pretenses">False pretenses</option>
-                                                                                <option value="Attempt">Attempt</option>
-                                                                                <option value="Solicitation">Solicitation</option>
-                                                                                <option value="Conspiracy">Conspiracy</option>
-                                                                                <option value="Alcohol related crimes">Alcohol related crimes</option>
-                                                                                <option value="Selling alcohol to minor">Selling alcohol to minor</option>
-                                                                              </select> 
-   
-    <br>
-    <br>
-    <label for="description"><b>DESCRIPTION</b></label>
-    <input type="text" placeholder="ENTER DESCRIPTION" name="cdescription" required>
-    
-    <label for="witness"><b>WITNESS</b></label>
-    <input type="text" placeholder="ARE YOU A WITNESS" name="witness" required>
-    <hr>
-    
+                <label for="dt"><b>DATE AND TIME OF INCIDENT</b></label>
+                <input type="date" class="form-control" placeholder="ENTER DATE AND TIME OF INCIDENT" name="date_of_incident" required><br>
 
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  
-  
-</form>
 
-</body>
+                <label for="locaton"><b>LOCATION</b></label>
+                <input type="text" placeholder="ENTER LOCATION" name="clocation" required>
+
+                <label for="crime"><b>CRIME TYPE</b></label>
+                <br>
+                <br>
+                <select name="crime_type" >
+                    <option value=""  disabled selected hidden class="form-control">Select Crime type</option>
+                    <option value="Assault">Assault</option>
+                    <option value="Battery">Battery</option>
+                    <option value="Kidnapping">Kidnapping</option>
+                    <option value="Homicide">Homicide</option>
+                    <option value="Rape/Sexual Assault">Rape/Sexual Assault</option>
+                    <option value="Larceny">Larceny</option>
+                    <option value="Robbery">Robbery</option>
+                    <option value="Burglary">Burglary</option>
+                    <option value="Arson">Arson</option>
+                    <option value="Embezzlement">Embezzlement</option>
+                    <option value="Forgery">Forgery</option>
+                    <option value="False pretenses">False pretenses</option>
+                    <option value="Attempt">Attempt</option>
+                    <option value="Solicitation">Solicitation</option>
+                    <option value="Conspiracy">Conspiracy</option>
+                    <option value="Alcohol related crimes">Alcohol related crimes</option>
+                    <option value="Selling alcohol to minor">Selling alcohol to minor</option>
+                </select> 
+
+                <br>
+                <br>
+                <label for="description"><b>DESCRIPTION</b></label>
+                <input type="text" placeholder="ENTER DESCRIPTION" name="cdescription" required>
+
+                <label for="witness"><b>WITNESS</b></label>
+                <input type="text" placeholder="ARE YOU A WITNESS" name="witness" required>
+                <hr>
+
+
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
+
+
+        </form>
+
+    </body>
 </html>

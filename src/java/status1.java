@@ -36,14 +36,7 @@ public class status1 extends HttpServlet {
             
             
             /* TODO output your page here. You may use following sample code. */
-            String id1 = request.getParameter("id");
             
-             int id = Integer.parseInt(id1); 
-            String status = request.getParameter("status");
-            String name = request.getParameter("complaint_handler_name");
-            String contact = request.getParameter("police_contact_number");
-            int phno=Integer.parseInt(contact);
-            String desc= request.getParameter("description");
              
              
              
@@ -55,37 +48,23 @@ public class status1 extends HttpServlet {
             out.println("<body>");
            
         try{
-              
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into status1 values(?,?,?,?,?)");
-                      ps1.setInt(1,id);
-                     ps1.setString(2,status);
-                     ps1.setString(3,name);
-                     ps1.setInt(4,phno);
-                     ps1.setString(5,desc);
-                     ps1.executeUpdate();
-              
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
+              String id1 = request.getParameter("id");
             
-             }
-             catch(Exception e)
-            {
-                out.println(e);
-            }
-          try{
-              
+             int id = Integer.parseInt(id1); 
+            String status = request.getParameter("status");
+            String name = request.getParameter("complaint_handler_name");
+            String contact = request.getParameter("police_contact_number");
+            String desc= request.getParameter("description");   
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into status1 values(?,?,?,?,?)");
+                 PreparedStatement ps1=con.prepareStatement("insert into status values(?,?,?,?,?)");
                       ps1.setInt(1,id);
                      ps1.setString(2,status);
                      ps1.setString(3,name);
-                     ps1.setInt(4,phno);
+                     ps1.setString(4,contact);
                      ps1.setString(5,desc);
                      ps1.executeUpdate();
-              
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
+                    out.println("<html><body><script>window.alert('Case "+status+"');window.location.assign('admin.html');</script></body></html>");
             
              }
              catch(Exception e)

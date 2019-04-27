@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,89 +35,68 @@ public class complaintservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet complaintservlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            //int id=Integer.parseInt(request.getParameter("cid"));
-            
-            String name=request.getParameter("cname");
-            String address=request.getParameter("caddress");
-            int phno=Integer.parseInt(request.getParameter("cphone"));
-            String job=request.getParameter("cjob");
-            String cdob=request.getParameter("dob");
-            String date_of_inci=request.getParameter("date_of_incident");
-         
-            String location=request.getParameter("clocation");
-            String type=request.getParameter("crime_type");
-            String description=request.getParameter("cdescription");
-            String cwitness=request.getParameter("witness");
-            PreparedStatement ps1 = null;
-            
-            
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Registeruser</title>");            
+            out.println("<title>Servlet complaintservlet</title>");
             out.println("</head>");
             out.println("<body>");
 
-            try{
-              
+            try {
+                HttpSession session = request.getSession(false);
+                String uid = session.getAttribute("user_id").toString();
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");  
+                PreparedStatement sl = con.prepareStatement("select * from register");
+                ResultSet r1= sl.executeQuery();
+                r1.first();
+                String address = r1.getString("address");
+                String phno = r1.getString("phonenumber");
+                String job = r1.getString("occupation");
+                String cdob = request.getParameter("dob");
+                String date_of_inci = request.getParameter("date_of_incident");
+
+                String location = request.getParameter("clocation");
+                String type = request.getParameter("crime_type");
+                String description = request.getParameter("cdescription");
+                String cwitness = request.getParameter("witness");
+                PreparedStatement ps1 = null;
+
                 PreparedStatement s1 = con.prepareStatement("select * from complaint");
-                 ResultSet r = s1.executeQuery();
-                 int cid=1;
-                 if(r.next())
-                 {  r.last();
-                     cid = r.getInt("cid")+1;
-                 }
-                  ps1=con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
-                     ps1.setInt(1,cid);
-                     ps1.setString(2,name);
-                     ps1.setString(3,address);
-                     ps1.setInt(4, phno);
-                     ps1.setString(5,job);
-                     ps1.setString(6,cdob);
-                     ps1.setString(7,date_of_inci);
-                     ps1.setString(8,location);
-                      ps1.setString(9,type);
-                     ps1.setString(10,description);
-                     ps1.setString(11,cwitness);
-                     cid++;
-                      int row = ps1.executeUpdate();
+                ResultSet r = s1.executeQuery();
+                int cid = 1;
+                if (r.next()) {
+                    r.last();
+                    cid = r.getInt("cid") + 1;
+                }
+                ps1 = con.prepareStatement("insert into complaint  values(?,?,?,?,?,?,?,?,?,?)");
+                ps1.setInt(1, cid);
+                ps1.setString(2, uid);
+                ps1.setString(3, address);
+                ps1.setString(4, phno);
+                ps1.setString(5, job);
+                ps1.setString(6, date_of_inci);
+                ps1.setString(7, location);
+                ps1.setString(8, type);
+                ps1.setString(9, description);
+                ps1.setString(10, cwitness);
+                int row = ps1.executeUpdate();
 
-            if (row > 0) {
+                if (row > 0) {
 
-               out.println("<html><head><script>window.alert('RECORD ADDED');window.alert('ID:'+cid+'');window.location.assign('LOGIN.html');</script></head></html>");
+                    out.println("<html><head><script>window.alert('Complaint Registered. Complaint Id :- "+cid+"');window.location.assign('user.html');</script></head></html>");
 
-               out.println(row);
-            }
-            }
-             catch(Exception e)
-            {
+                    out.println(row);
+                }
+            } catch (Exception e) {
                 out.println(e);
             }
-            out.println("<h1>Servlet Registeruser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-          
-       
-            
-            
-            
-            
-       
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

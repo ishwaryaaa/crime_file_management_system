@@ -31,14 +31,7 @@ public class Registeruser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String name = request.getParameter("name");
-            String address = request.getParameter("address");
-            int phonenumber = Integer.parseInt(request.getParameter("phonenumber"));        
-            String occupation = request.getParameter("occupation");
             
-            int age=Integer.parseInt(request.getParameter("age"));
-            String password=request.getParameter("password");
-            String cpassword=request.getParameter("cpassword");
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -48,21 +41,43 @@ public class Registeruser extends HttpServlet {
             out.println("<body>");
             
             try{
+                String name = request.getParameter("name");
+            String address = request.getParameter("address");
+            String phonenumber = request.getParameter("phonenumber");        
+            String occupation = request.getParameter("occupation");
+            
+            int age=Integer.parseInt(request.getParameter("age"));
+            String password=request.getParameter("password");
+            String cpassword=request.getParameter("cpassword");
+                out.println(" Working ");
+                if(password.equals(cpassword))
+                {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");  
+                PreparedStatement s1 = con.prepareStatement("select * from register");
+                 ResultSet r = s1.executeQuery();
+                 int cid=1;
+                 if(r.next())
+                 {  r.last();
+                     cid = r.getInt("user_id")+1;
+                 }
+                
                  PreparedStatement ps1=con.prepareStatement("insert into register  values(?,?,?,?,?,?,?)");
                      ps1.setString(1,name);
-                     ps1.setString(2,address);
-                     ps1.setInt(3,phonenumber);
-                     ps1.setString(4,occupation);
-                     ps1.setInt(5,age);
-                    
-                     ps1.setString(6,password);
-                     ps1.setString(7,cpassword);
+                     ps1.setInt(2, cid);
+                     ps1.setString(3,address);
+                     ps1.setString(4,phonenumber);
+                     ps1.setString(5,occupation);
+                     ps1.setInt(6,age);
+                     ps1.setString(7,password);
                      
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
-            
+                    out.println("<html><body><script>window.alert('Successfully Registered');window.location.assign('login.html');</script></body></html>");
+                }
+                else
+                {
+                     out.println(" Mis match ");
+                }
              }
              catch(Exception e)
             {

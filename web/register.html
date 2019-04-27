@@ -522,7 +522,7 @@ function v(){
     <input type="text" placeholder="Enter Address" name="address" required><BR>
     
     <label for="phonenumber"><b></b></label>
-    <input type="text" placeholder="Enter Phone Number" name="phonenumber" maxlength="10" required><BR>
+    <input type="text" placeholder="Enter Phone Number" pattern="^\d{10,10}$" name="phonenumber" required><BR>
     
     <label for="job"><b></b></label>
     <input type="text" placeholder="Enter Job" name="occupation" required><BR>
@@ -530,7 +530,7 @@ function v(){
     <label for="age"><b></b></label>
     <input type="text" placeholder="Enter Age" name="age" required><BR>
    
-  <input type="password" id="psw" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="psw" placeholder="Password" name="password" required>
 
     
     <label for="confirm_password"><b></b></label>

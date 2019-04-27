@@ -57,7 +57,6 @@ public class admincomplaint extends HttpServlet {
                         +"<th>ADDRESS</th>"
                         +"<th>PHONE NUMBER</th>"
                         +"<th>OCCUPATION</th>"
-                        +"<th>DATE OF BIRTH</th>"
                         +"<th>DATE OF INCIDENT</th>"
                         +"<th>LOCATION</th>"
                         +"<th>CRIME TYPE</th>"
@@ -69,19 +68,18 @@ public class admincomplaint extends HttpServlet {
                 while(rs.next())
                 {   count++;
                     int id = rs.getInt("cid");
-                    String name = rs.getString("cname");
+                    String name = rs.getString("user_id");
                     String add = rs.getString("caddress");
                     
-                    int ph = rs.getInt("cphone");
+                    String ph = rs.getString("cphone");
                     String job = rs.getString("cjob");
-                    int dob = rs.getInt("dob");
                     int date = rs.getInt("date_of_incident");
                     String loc = rs.getString("clocation");
                     String type=rs.getString("crime_type");
                     String desc= rs.getString("cdescription");
                     String wit = rs.getString("witness");
                  
-                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+" <td> "+dob+"<td >  "+date+"  <td> "+loc+"<td> "+type+"<td> "
+                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+add+"<td > "+ ph+" <td> "+job+"<td >  "+date+"  <td> "+loc+"<td> "+type+"<td> "
                             +desc+"<td> "+wit+"<td>"+"<input type = \"checkbox\" name = \"ch"+count+"\" value=\""+id+"\">"+"</tr>");
                    
                     out.println("<br>");
