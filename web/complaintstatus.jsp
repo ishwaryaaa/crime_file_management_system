@@ -1,9 +1,10 @@
-<%-- 
+<%--
     Document   : complaintstatus.jsp
     Created on : Apr 27, 2019, 1:59:11 PM
     Author     : KHSCI5MCA16060
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,11 +27,77 @@
 }
 </style>
 </head>
-
-
 <body>
-    
-    
+    <div style="margin-top:50px;border-radius:5px;text-align:center;" class="container bg-light">
+      <div class="display-4">
+        Complaint Status
+      </div>
+      <div class="container" style="overflow-x:auto">
+        <table class="table table-striped bg-light" style="margin-top: 50px;border-radius:5px !important;">
+          <tr>
+            <th>Complaint Id</th>
+            <th>Status</th>
+            <th>Complaint handling officer </th>
+            <th> Contact number</th>
+            <th>Description</th>
+          </tr>
+
+          <%
+              String uid = session.getAttribute("user_id").toString();
+              try
+              {
+                  String cid;
+                  Class.forName("com.mysql.jdbc.Driver");
+                Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");
+                PreparedStatement s1 = con.prepareStatement("select * from complaint where user_id=?");
+                PreparedStatement s2 = con.prepareStatement("select * from status where id=?");
+
+                s1.setString(1,uid);
+                ResultSet r = s1.executeQuery();
+                ResultSet r1;
+                int flag=0;
+                while(r.next())
+                {
+
+                    cid=r.getString("cid");
+                    s2.setString(1,cid);
+                    r1=s2.executeQuery();
+                    while(r1.next())
+                    {
+                      flag=1;
+                      %>
+                      <tr>
+                          <td> <%=cid%> </td>
+                          <td> <%=r1.getString("status")%> </td>
+                          <td> <%=r1.getString("complaint_handler_name")%> </td>
+                          <td> <%=r1.getString("police_contact_number")%> </td>
+                          <td> <%=r1.getString("description")%> </td>
+                      <tr>
+                      <%
+                    }
+                }
+
+                if(flag==0)
+                {
+                        %>
+                      <tr>
+                          <td colspan="5">
+                            <div class="alert alert-danger">
+                              No Data Found
+                            </div>
+                          </td>
+                      </tr>
+                        <%
+                }
+              }catch(Exception ex)
+              {
+                  out.println(ex);
+              }
+          %>
+        </table>
+      </div>
+    </div>
+
 </body>
 
 </html>

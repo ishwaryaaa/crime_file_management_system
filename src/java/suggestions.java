@@ -41,35 +41,37 @@ public class suggestions extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
            
+             
+            try{
+                int cid=Integer.parseInt(request.getParameter("cid"))   ;
             String timelymanner=request.getParameter("timely_manner");
-            String pro=request.getParameter("proffesional");
+            String pro=request.getParameter("pro");
              String polite=request.getParameter("polite");
             String issue=request.getParameter("issue");
             
-            String satif=request.getParameter("satisfaction");
+            String satif=request.getParameter("satif");
             String concern=request.getParameter("concern");
              String manner=request.getParameter("manner");
             String remarks=request.getParameter("remarks");
             String comments=request.getParameter("comments");
-             
-            try{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into suggestions values(?,?,?,?,?,?,?,?,?)");
-                 
-                     ps1.setString(1,timelymanner);
-                     ps1.setString(2,pro);
-                     ps1.setString(3,polite);
-                     ps1.setString(4,issue);
-                     ps1.setString(5,satif);
-                     ps1.setString(6,concern);
-                     ps1.setString(7,manner);
+                 PreparedStatement ps1=con.prepareStatement("insert into suggestions values(?,?,?,?,?,?,?,?,?,?)");
                     
-                     ps1.setString(8,remarks);
-                     ps1.setString(9,comments);
+                    ps1.setInt(1,cid);
+                     ps1.setString(2,timelymanner);
+                     ps1.setString(3,pro);
+                     ps1.setString(4,polite);
+                     ps1.setString(5,issue);
+                     ps1.setString(6,satif);
+                     ps1.setString(7,concern);
+                     ps1.setString(8,manner);
+                    
+                     ps1.setString(9,remarks);
+                     ps1.setString(10,comments);
                      out.println(pro);
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('login.html');</script></body></html>");
+                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('user.html');</script></body></html>");
             
              }
              catch(Exception e)

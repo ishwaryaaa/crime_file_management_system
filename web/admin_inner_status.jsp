@@ -7,17 +7,18 @@
     </head>
     <body>
         <% int cid = 0,count=Integer.parseInt(session.getAttribute("count").toString());
-           String c= "ch";
+           String c= "ch",s="";
            int flag=0;
            int i=1;
+           
            while(flag==0&&i<=count)
            {
-               c+=i;
-               if(request.getParameter(c)!=null)
+               
+               s=c+i;
+               if(request.getParameter(s)!=null)
                {
                    flag=1;
-                   cid=Integer.parseInt(request.getParameter(c));
-                   
+                   cid=Integer.parseInt(request.getParameter(s));   
                }
                i++;
            }

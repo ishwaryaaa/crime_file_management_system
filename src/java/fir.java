@@ -62,14 +62,8 @@ public class fir extends HttpServlet {
             try{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
-             PreparedStatement s1 = con.prepareStatement("select * from fir");
-                 ResultSet r = s1.executeQuery();
-                 //int f_id=1;
-                 ///if(r.next())
-                // {  r.last();
-                //     f_id = r.getInt("f_id")+1;
-                // }
+                PreparedStatement ps1=con.prepareStatement("insert into fir  values(?,?,?,?,?,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
+               
 
                      ps1.setInt(1,complaint_id);
                      ps1.setInt(2,f_id);
