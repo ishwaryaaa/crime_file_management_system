@@ -40,7 +40,7 @@ public class alocohol_crimes extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet alocohol_crimes</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body background='17.jpg'>");
              try
             {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -48,7 +48,9 @@ public class alocohol_crimes extends HttpServlet {
                 PreparedStatement ps = con.prepareStatement("select * from criminal_records1 where crime='Alcohol related crimes'");
                 ResultSet rs = ps.executeQuery();
                 out.println("<center>");
-                out.println("<h1>COMPLAINT DETAILS <h1>");
+                out.println("<form action='admin.html' ><table border=1 width=60% height=80% align=right>");
+              
+                out.println("<h1>ALCOHOL CRIME DETAILS <h1>");
                
                 out.println("</center>"); 
               
@@ -87,8 +89,8 @@ public class alocohol_crimes extends HttpServlet {
             String crime= request.getParameter("crime");        
        
                  
-                    out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+address+"<td > "+ gender+" <td> "+age+" <td> "+hgt+"<td >  "+wgt+"  <td> "+color+"<td> "+cident+"<td> "+occup+"<td> "+father+"<td> "+mother+"<td> "+crime+"<td>"+"</tr>");
-                   
+                  //  out.println("<tr align=center >"+ "<td >" +id+"<td width ='20%' >"+name+"<td > "+address+"<td > "+ gender+" <td> "+age+" <td> "+hgt+"<td >  "+wgt+"  <td> "+color+"<td> "+cident+"<td> "+occup+"<td> "+father+"<td> "+mother+"<td> "+crime+"<td>"+"</tr>");
+                    out.println ("<RIGHT> <button   name='Submit'>BACK</button></from></RIGHT> "); 
                     out.println("<br>");
                    
                     out.println("<br>");
@@ -100,7 +102,8 @@ public class alocohol_crimes extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 out.println ("<RIGHT> <button   name='Submit'>BACK</button></from></RIGHT> "); 
+                 //out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>BACK</button></a></CENTER> "); 
                  con.close();
                  
                 

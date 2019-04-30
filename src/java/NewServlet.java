@@ -78,7 +78,7 @@ public class NewServlet extends HttpServlet {
                 else if("o2".equals(type))
                 {
                     
-                    PreparedStatement stmt3=con.prepareStatement("select * from register2");
+                    PreparedStatement stmt3=con.prepareStatement("select * from register");
                     ResultSet rst3=stmt3.executeQuery(); 
                 
                     while(rst3.next())

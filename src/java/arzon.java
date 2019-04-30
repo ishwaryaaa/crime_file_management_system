@@ -40,17 +40,19 @@ public class arzon extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet arzon</title>");            
             out.println("</head>");
-            out.println("<body>");
+           out.println("<body background='17.jpg'>");
               try
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root","");
                 PreparedStatement ps = con.prepareStatement("select * from criminal_records1 where crime=?");
+                out.println("<form action='admin.html' ><table border=1 width=60% height=80% align=right>");
+              
                 ps.setString(1,"Arson");
                 
                 ResultSet rs = ps.executeQuery();
                 out.println("<center>");
-                out.println("<h1>COMPLAINT DETAILS <h1>");
+                out.println("<h1>ARZON CRIME DETAILS <h1>");
                
                 out.println("</center>"); 
               
@@ -113,7 +115,7 @@ public class arzon extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                // out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
                  con.close();
                  
                 

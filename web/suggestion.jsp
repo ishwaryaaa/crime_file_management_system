@@ -17,7 +17,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body background="16.jpg"><label style="float:right;color:greenyellow">
+    <a style='text-decoration:none;' href='user.html'> 
+<button>
+<img src="next.png" alt="FIR"  width="30" height="30">
+</button> 
+  </a>
+        </label>
         <div class="container" style="margin-top:50px;border-radius:5px;text-align:center;">
           <form action="suggestions" method="post">
 

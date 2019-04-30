@@ -49,7 +49,7 @@ public class Registeruser extends HttpServlet {
             int age=Integer.parseInt(request.getParameter("age"));
             String password=request.getParameter("password");
             String cpassword=request.getParameter("cpassword");
-                out.println(" Working ");
+               
                 if(password.equals(cpassword))
                 {
                 Class.forName("com.mysql.jdbc.Driver");

@@ -13,10 +13,6 @@
         <servlet-class>fir</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>petition</servlet-name>
-        <servlet-class>petition</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>fir_status</servlet-name>
         <servlet-class>fir_status</servlet-class>
     </servlet>
@@ -151,10 +147,6 @@
     <servlet-mapping>
         <servlet-name>fir</servlet-name>
         <url-pattern>/fir</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>petition</servlet-name>
-        <url-pattern>/petition</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>fir_status</servlet-name>

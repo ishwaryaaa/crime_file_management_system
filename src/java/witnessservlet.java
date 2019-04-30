@@ -33,13 +33,16 @@ public class witnessservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+             int wid=0;
             
             String name=request.getParameter("name");
             String address=request.getParameter("address");
             int phonenumber=Integer.parseInt(request.getParameter("phonenumber"));
             String suspectname=request.getParameter("suspectname");
             String description=request.getParameter("description");
+             PreparedStatement ps1 = null;
+             
+             
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -47,22 +50,30 @@ public class witnessservlet extends HttpServlet {
             out.println("<title>Servlet witnessservlet</title>");            
             out.println("</head>");
             out.println("<body>");
-             out.println("ji");
+            
+             //out.println("ji");
           try{
               
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");   
-                 PreparedStatement ps1=con.prepareStatement("insert into witness values(?,?,?,?,?)");
-                   
-                     ps1.setString(1,name);
-                     ps1.setString(2,address);
-                     ps1.setInt(3,phonenumber);
-                     ps1.setString(4,suspectname);
-                     ps1.setString(5,description);
+                  ps1=con.prepareStatement("insert into witness values(?,?,?,?,?,?)");
+                   ps1.setInt(1,wid);
+                     ps1.setString(2,name);
+                     ps1.setString(3,address);
+                     ps1.setInt(4,phonenumber);
+                     ps1.setString(5,suspectname);
+                     ps1.setString(6,description);
+                    
                      
                      
-                     ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('index.html');</script></body></html>");
+                      int row = ps1.executeUpdate();
+
+            if (row > 0) {
+
+               out.println("<html><head><script>window.alert('RECORD ADDED');window.alert('ID:'+wid+'');window.location.assign('index.html');</script></head></html>");
+
+               
+                   }
         
              }
              catch(Exception e)

@@ -40,7 +40,7 @@ public class selling_alocohol_minor extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet attempt</title>");            
             out.println("</head>");
-            out.println("<body>");
+             out.println("<body background='17.jpg'>");
              try
             {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -49,7 +49,7 @@ public class selling_alocohol_minor extends HttpServlet {
                 ps.setString(1,"Selling Alcohol to Minor");
                 ResultSet rs = ps.executeQuery();
                 out.println("<center>");
-                out.println("<h1>COMPLAINT DETAILS <h1>");
+                out.println("<h1>SELLING ALOCOHOL MINOR CRIME DETAILS <h1>");
                
                 out.println("</center>"); 
               
@@ -109,7 +109,7 @@ public class selling_alocohol_minor extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                // out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
                  con.close();
                  
                 

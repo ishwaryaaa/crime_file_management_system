@@ -1,9 +1,3 @@
-<%-- 
-    Document   : fir
-    Created on : Apr 27, 2019, 3:00:52 PM
-    Author     : KHSCI5MCA16060
---%>
-
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,13 +12,11 @@
 
 
         <style>
-
             .contactBody{
                 background-color:black;
                 background-size: cover;
                 background-attachment: fixed;
                 height:1200px;
-
             }
             .title{
                 margin: 0 auto;
@@ -34,7 +26,6 @@
                 font-size: 42px;
                 color: rgb(252, 252, 252);
             }
-
             #title-Tag-Line{
                 font-size: 20px;
             }
@@ -44,7 +35,6 @@
                 height: 50%;
                 margin: 5% auto 0 auto; 
             }
-
             /* form animation starts */
             .form {
                 background: #EBEBEB;
@@ -57,14 +47,12 @@
                 padding: 10px 10px;  
                 animation: bounce 1.5s infinite;
             }
-
             .name { 
                 background-color:#2BB09A ;
                 border-bottom: 5px solid #B2175F;
                 color: grey;
                 width:300px;
             }
-
             ::-webkit-input-placeholder{
                 color: white;
                 font-size: 20px;
@@ -75,20 +63,17 @@
                 height:30px;
                 width:400px;
             }
-
             .email {
                 background-color: #2BB09A;  
                 border-bottom: 5px solid #502789;
                 height:50px;
                 width:300px;
-
             }
             .email:hover{
                 background-color: white;  
                 border-bottom: 5px solid #502789;
                 height:30px;
                 width:380px;
-
             }
             .message {   
                 background-color: #2BB09A;
@@ -97,14 +82,12 @@
                 height: 100px;  
                 width:300px;
             }
-
             .message:hover{
                 background-color: white;
                 border-bottom: 5px solid #2BB09A;
                 height: 100px;
                 width:370px;
             }
-
             .submit{
                 border-radius:5px;
                 padding:10px;
@@ -112,14 +95,11 @@
                 border: none;
                 border-bottom: 5px solid #CB64B2; 
                 transform: translateY(-120px); 
-
             }
-
             .submit:hover{
                 border-bottom: 5px solid #CB64B2;  
                 box-shadow: 15px 15px 15px 5px rgba(78, 72, 77, 0.219);
             }
-
             .entry{
                 display: block;
                 margin: 30px auto;
@@ -129,7 +109,6 @@
                 transition: all 0.5s ease 0s;
                 box-shadow: 0px 0px 25px 2px #AAA;  
             }
-
             /* Shadow to make it look like form is floating  */
             .shadow{
                 box-shadow: 0px 0px 60px 5px #AAA;
@@ -149,30 +128,22 @@
                 border: none;
                 border-bottom: 5px solid #CB64B2; 
                 margin-top: 150px; 
-
             }
-
-
-
             @keyframes bounce{
                 0%{
-
                 }
                 50%{
                     transform: translate(0, 8px);
                 }
-
             }
             @keyframes shadow{
                 0%{
-
                 }
                 50%{
                     opacity: 0.8;
                     width: 50%;
                 }
             }
-
         </style>
         <!-- import statements of bootstrap4 -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -206,16 +177,12 @@
                               while (r.next()) {
                                 flag=1;
                                  out.println("<option>"+r.getString("cid")+"</option>" );
-
                               }
-
                               if (flag == 0) {
                               out.println("<option > No Data Found  </option>");
                               }
                           }
                           catch(Exception ex
-
-
                               )
                       {
                         out.println(ex);

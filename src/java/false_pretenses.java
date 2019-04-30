@@ -40,7 +40,7 @@ public class false_pretenses extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet false_pretenses</title>");            
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body background='17.jpg'>");
              try
             {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -48,7 +48,7 @@ public class false_pretenses extends HttpServlet {
                 PreparedStatement ps = con.prepareStatement("select * from criminal_records1 where crime='False Pretenses'");
                 ResultSet rs = ps.executeQuery();
                 out.println("<center>");
-                out.println("<h1>COMPLAINT DETAILS <h1>");
+                out.println("<h1>FALSE PRETENSES CRIME DETAILS <h1>");
                
                 out.println("</center>"); 
               
@@ -91,7 +91,7 @@ public class false_pretenses extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                 //out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
                  con.close();
                  
                 

@@ -87,7 +87,7 @@ public class criminal_records1 extends HttpServlet {
                 
             if (row > 0) {
 
-               out.println("<script>window.alert('Criminal Record Added successfully. Record id :- "+cid+" '); window.location.assign('user.html');</script>");
+               out.println("<script>window.alert('Criminal Record Added successfully. Record id :- "+cid+" '); window.location.assign('admin.html');</script>");
 
                out.println(row);
 

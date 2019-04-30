@@ -1,9 +1,3 @@
-<%--
-    Document   : complaintstatus.jsp
-    Created on : Apr 27, 2019, 1:59:11 PM
-    Author     : KHSCI5MCA16060
---%>
-
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,6 +22,13 @@
 </style>
 </head>
 <body>
+    <label style="float:right;color:greenyellow">
+    <a style='text-decoration:none;' href='user.html'> 
+<button>
+<img src="next.png" alt="FIR"  width="30" height="30">
+</button> 
+  </a>
+        </label>
     <div style="margin-top:50px;border-radius:5px;text-align:center;" class="container bg-light">
       <div class="display-4">
         Complaint Status
@@ -51,14 +52,12 @@
                 Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/crime","root", "");
                 PreparedStatement s1 = con.prepareStatement("select * from complaint where user_id=?");
                 PreparedStatement s2 = con.prepareStatement("select * from status where id=?");
-
                 s1.setString(1,uid);
                 ResultSet r = s1.executeQuery();
                 ResultSet r1;
                 int flag=0;
                 while(r.next())
                 {
-
                     cid=r.getString("cid");
                     s2.setString(1,cid);
                     r1=s2.executeQuery();
@@ -76,7 +75,6 @@
                       <%
                     }
                 }
-
                 if(flag==0)
                 {
                         %>

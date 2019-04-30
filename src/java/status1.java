@@ -41,6 +41,7 @@ public class status1 extends HttpServlet {
              
              
             out.println("<!DOCTYPE html>");
+            out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet status1</title>");            
@@ -76,6 +77,9 @@ public class status1 extends HttpServlet {
             out.println("</html>");
         }
     }
+
+        
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

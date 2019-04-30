@@ -23,7 +23,6 @@
                i++;
            }
            
-
         %>
         <form action="status1" method="POST"> 
             ID:   <input type="text" placeholder="" name="id" value="<%=cid%>" required><BR>

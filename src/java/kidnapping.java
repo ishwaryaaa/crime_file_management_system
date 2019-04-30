@@ -40,7 +40,7 @@ public class kidnapping extends HttpServlet {
             out.println("<head>");
             out.println("<title>Servlet Kidnapping</title>");            
             out.println("</head>");
-            out.println("<body>");
+             out.println("<body background='17.jpg'>");
             
               try
             {
@@ -51,7 +51,7 @@ public class kidnapping extends HttpServlet {
                 ResultSet rs = ps.executeQuery();
                  
                 out.println("<center>");
-                out.println("<h1>COMPLAINT DETAILS <h1>");
+                out.println("<h1>KIDNAPPING CRIME DETAILS <h1>");
                
                 out.println("</center>"); 
               
@@ -97,7 +97,7 @@ public class kidnapping extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                 out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                // out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
                  con.close();
                  
                 

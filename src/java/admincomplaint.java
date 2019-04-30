@@ -49,6 +49,7 @@ public class admincomplaint extends HttpServlet {
                 out.println("<h1>COMPLAINT DETAILS <h1>");
                
                 out.println("</center>"); 
+                out.println("<form action='admin_inner_status.jsp' ><table border=1 width=60% height=80% align=right>");
               
                 out.println("<form action='admin_inner_status.jsp' ><table border=1 width=60% height=80% align=center>"
                         + "<tr>"
@@ -73,7 +74,7 @@ public class admincomplaint extends HttpServlet {
                     
                     String ph = rs.getString("cphone");
                     String job = rs.getString("cjob");
-                    int date = rs.getInt("date_of_incident");
+                    String date = rs.getString("date_of_incident");
                     String loc = rs.getString("clocation");
                     String type=rs.getString("crime_type");
                     String desc= rs.getString("cdescription");
@@ -96,6 +97,14 @@ public class admincomplaint extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
+                 
+       out.println ("<label style=\"float:right;color:greenyellow\">\n" +
+"    <a style='text-decoration:none;' href='admin.html'> \n" +
+"<button>\n" +
+"<img src=\"next.png\" alt=\"FIR\"  width=\"30\" height=\"30\">\n" +
+"</button> \n" +
+"  </a>\n" +
+"        </label>"); 
                  out.println ("<CENTER> <button   name='Submit'>UPDATE</button></from></CENTER> "); 
                 
                  

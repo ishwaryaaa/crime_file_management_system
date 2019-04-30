@@ -85,7 +85,7 @@ public class adminwitness extends HttpServlet {
                  out.println("<br>");
                    
                  out.println("<br>");
-                //out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
+                out.println ("<CENTER><a style='text-decoration:none;' href='admin_inner_status.html'> <button   name='Submit'>UPDATE</button></a></CENTER> "); 
                  con.close();
                  
                 

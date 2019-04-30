@@ -71,7 +71,7 @@ public class suggestions extends HttpServlet {
                      ps1.setString(10,comments);
                      out.println(pro);
                      ps1.executeUpdate();
-                    out.println("<html><body><script>window.alert('ONE ROW INSERTED');window.location.assign('user.html');</script></body></html>");
+                    out.println("<html><body><script>window.alert('THANK YOU FOR YOUR FEEDBACK');window.location.assign('user.html');</script></body></html>");
             
              }
              catch(Exception e)
